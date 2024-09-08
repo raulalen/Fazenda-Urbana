@@ -1,0 +1,152 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 40ex;
+    background-color:#d4d5d7;
+    background-blend-mode: normal; /* Evita mistura das camadas */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.top-bar {
+    position: fixed; /* Fixa a faixa no topo da página */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 18px; /* Altura da faixa */
+    background-color: #8096b2; /* Cor da faixa igual ao botão de login */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    z-index: 1000; /* Garante que a faixa fique acima dos outros elementos */
+    text-shadow: white;
+    padding-left: 20px;
+}
+
+.bottom-bar {
+    position: fixed; /* Fixa a faixa no final da página */
+    bottom: 0; /* Alinha a faixa ao fundo da tela */
+    left: 0;
+    width: 100%;
+    height: 18px; /* Altura da faixa */
+    background-color: #3aa045; /* Cor da faixa igual ao botão de login */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    z-index: 1000; /* Garante que a faixa fique acima dos outros elementos */
+    text-shadow: white;
+    padding-left: 20px;
+    text-align: center; /* Centraliza o texto horizontalmente */
+    line-height: 18px; /* Ajusta o alinhamento vertical do texto, igual à altura da faixa */
+}
+
+header{
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+h2{
+    text-align: center;
+    font-size: 36px;
+}
+
+img{
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 150ex;
+    position: fixed;
+    filter: drop-shadow(0px 0 3px);
+}
+
+/* Estilos para a div container */
+.container {
+    background-color: white; /* Fundo branco */
+    border-radius: 8px; /* Bordas levemente arredondadas */
+    padding: 30px; /* Espaçamento interno */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    border: 1px solid #d4d5d7;
+    width: 450px; /* Largura da caixa de login */
+    box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+    position: fixed;
+}
+
+/* Estilos adicionais para a caixa de login */
+.caixalogin {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaçamento entre elementos */
+}
+
+.login-container input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #d4d5d7;
+    border-radius: 5px;
+    background-color: #eceff1;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .checkbox-container input[type="checkbox"] {
+    margin-left: 8px; /* Espaço entre o texto e a caixa de seleção */
+    cursor: pointer;
+  }
+  
+  .checkbox-label {
+    font-size: 14px; /* Tamanho da fonte do texto */
+  }
+
+/* Estilização do botão */
+button {
+    background-color: #8096b2; /* Cor de fundo azul */
+    color: white; /* Texto branco */
+    border: 1px solid #6680a2;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #6680a2; /* Cor de fundo azul escuro quando o mouse está sobre o botão */
+}
+
+.undertext{
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    justify-content: center;
+    padding-top: 12px;
+    color: #b7b8b9;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilização dos links */
+a {
+    padding-top: 5px;
+    padding-bottom: 8px;
+    color: black; /* Cor azul para links */
+    text-decoration: none; /* Remove o sublinhado padrão */
+    cursor: pointer;
+    font-size: 14px;
+    padding-left: 83px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+/* commit atualizado  14h23

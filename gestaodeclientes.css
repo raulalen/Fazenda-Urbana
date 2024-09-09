@@ -1,0 +1,195 @@
+/* Estilos Gerais */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f9;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+h2, h3 {
+    text-align: center;
+    color: #2c3e50;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+/* Estilos da Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+thead {
+    display: none; /* Esconde o cabeçalho da tabela */
+}
+
+tr {
+    display: block;
+    background-color: #fff;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.2s ease;
+}
+
+tr:hover {
+    transform: translateY(-5px); /* Efeito de elevação ao passar o mouse */
+}
+
+td {
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 16px;
+}
+
+td:last-child {
+    border-bottom: none;
+}
+
+td:before {
+    content: attr(data-label);
+    font-weight: 600;
+    display: inline-block;
+    width: 150px;
+    color: #2c3e50;
+}
+
+button {
+    padding: 8px 15px;
+    margin: 5px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+button:active {
+    background-color: #1a5a7f;
+}
+
+button.editar {
+    background-color: #f39c12;
+}
+
+button.editar:hover {
+    background-color: #e67e22;
+}
+
+button.excluir {
+    background-color: #e74c3c;
+}
+
+button.excluir:hover {
+    background-color: #c0392b;
+}
+
+/* Estilos do Formulário */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+form input {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+button[type="submit"] {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #27ae60;
+}
+
+@media (min-width: 600px) {
+    td:before {
+        width: 180px;
+    }
+
+    form {
+        padding: 30px;
+    }
+
+    button {
+        padding: 10px 20px;
+    }
+}
+
+/* Estilo do campo de pesquisa */
+#searchInput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    outline: none;
+}
+
+#searchInput:focus {
+    border-color: #3498db;
+}
+
+/* Notificação de Sucesso */
+#successNotification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 1000;
+    display: none;
+}
+
+#successNotification.visible {
+    display: block;
+}
+
+#successNotification.hidden {
+    display: none;
+}

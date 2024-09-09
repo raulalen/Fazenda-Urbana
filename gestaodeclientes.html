@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Pedidos</title>
+    <link rel="stylesheet" href="gestaodeclientes.css">
+</head>
+<body>
+
+    <h2>Controle de Pedidos</h2>
+
+    <!-- Notificação de Sucesso -->
+    <div id="successNotification" class="hidden">Pedido adicionado com sucesso!</div>
+
+    <!-- Filtros de Pesquisa -->
+    <div>
+        <label for="filterColumn">Pesquisar por:</label>
+        <select id="filterColumn">
+            <option value="codigo">Código</option>
+            <option value="dataCompra">Data da Compra</option>
+            <option value="produto">Produto</option>
+            <option value="quantidade">Quantidade</option>
+            <option value="valorTotal">Valor Total</option>
+            <option value="cliente">Cliente</option>
+            <option value="vendedor">Vendedor</option>
+            <option value="comissao">Comissão</option>
+        </select>
+        <input type="text" id="searchInput" placeholder="Digite para pesquisar..." onkeyup="pesquisarPedido()">
+    </div>
+
+    <table id="pedidoTable">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Data da Compra</th>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Valor Total</th>
+                <th>Cliente</th>
+                <th>Vendedor</th>
+                <th>Comissão</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- As linhas de pedido serão adicionadas aqui -->
+        </tbody>
+    </table>
+
+    <h3>Adicionar Pedido</h3>
+    <form id="pedidoForm">
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" required>
+        <label for="dataCompra">Data da Compra:</label>
+        <input type="date" id="dataCompra" required>
+        <label for="produto">Produto:</label>
+        <input type="text" id="produto" required>
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" id="quantidade" required>
+        <label for="valorTotal">Valor Total:</label>
+        <input type="text" id="valorTotal" required>
+        <label for="cliente">Cliente:</label>
+        <input type="text" id="cliente" required>
+        <label for="vendedor">Vendedor:</label>
+        <input type="text" id="vendedor" required>
+        <label for="comissao">Comissão (5%):</label>
+        <input type="text" id="comissao" readonly>
+        <button type="submit">Adicionar Pedido</button>
+    </form>
+
+    <script>
+        const pedidoForm = document.getElementById('pedidoForm');
+        const pedidoTableBody = document.querySelector('#pedidoTable tbody');
+        const searchInput = document.getElementById('searchInput');
+        const filterColumn = document.getElementById('filterColumn');
+        const successNotification = document.getElementById('successNotification');
+        const dataCompraInput = document.getElementById('dataCompra');
+        const valorTotalInput = document.getElementById('valorTotal');
+        const comissaoInput = document.getElementById('comissao');
+
+        // Define a data atual no campo de data de compra
+        document.addEventListener('DOMContentLoaded', function () {
+            const hoje = new Date().toISOString().split('T')[0]; // Obtém a data no formato YYYY-MM-DD
+            dataCompraInput.value = hoje;
+        });
+
+        // Função para mostrar a notificação de sucesso
+        function showSuccessNotification() {
+            successNotification.classList.remove('hidden');
+            successNotification.classList.add('visible');
+
+            // Esconde a notificação automaticamente após 3 segundos
+            setTimeout(function () {
+                successNotification.classList.remove('visible');
+                successNotification.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Formatação do valor total e cálculo da comissão
+        valorTotalInput.addEventListener('input', function () {
+            const valor = parseFloat(valorTotalInput.value.replace(/[^\d,]/g, '').replace(',', '.')); // Remove caracteres indesejados e formata como número
+            if (!isNaN(valor)) {
+                valorTotalInput.value = `R$ ${valor.toFixed(2)}`;
+                calcularComissao(valor);
+            }
+        });
+
+        // Calcula a comissão automaticamente (5% do valor total)
+        function calcularComissao(valorTotal) {
+            const comissao = valorTotal * 0.05;
+            comissaoInput.value = `R$ ${comissao.toFixed(2)}`;
+        }
+
+        // Função para adicionar um novo pedido na tabela
+        pedidoForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const codigo = document.getElementById('codigo').value;
+            const dataCompra = dataCompraInput.value;
+            const produto = document.getElementById('produto').value;
+            const quantidade = document.getElementById('quantidade').value;
+            const valorTotal = valorTotalInput.value;
+            const cliente = document.getElementById('cliente').value;
+            const vendedor = document.getElementById('vendedor').value;
+            const comissao = comissaoInput.value;
+
+            const newRow = document.createElement('tr');
+
+            newRow.innerHTML = `
+                <td data-label="Código">${codigo}</td>
+                <td data-label="Data da Compra">${dataCompra}</td>
+                <td data-label="Produto">${produto}</td>
+                <td data-label="Quantidade">${quantidade}</td>
+                <td data-label="Valor Total">${valorTotal}</td>
+                <td data-label="Cliente">${cliente}</td>
+                <td data-label="Vendedor">${vendedor}</td>
+                <td data-label="Comissão">${comissao}</td>
+                <td data-label="Ações">
+                    <button class="editar" onclick="editarPedido(this)">Editar</button>
+                    <button class="excluir" onclick="excluirPedido(this)">Excluir</button>
+                </td>
+            `;
+
+            pedidoTableBody.appendChild(newRow);
+            pedidoForm.reset();
+
+            // Define a data atual novamente após o reset
+            dataCompraInput.value = new Date().toISOString().split('T')[0];
+
+            // Exibe a notificação de sucesso
+            showSuccessNotification();
+        });
+
+        // Função para editar um pedido
+        function editarPedido(button) {
+            const row = button.parentElement.parentElement;
+            const cells = row.querySelectorAll('td');
+
+            document.getElementById('codigo').value = cells[0].textContent;
+            document.getElementById('dataCompra').value = cells[1].textContent;
+            document.getElementById('produto').value = cells[2].textContent;
+            document.getElementById('quantidade').value = cells[3].textContent;
+            document.getElementById('valorTotal').value = cells[4].textContent.replace('R$', '').trim();
+            document.getElementById('cliente').value = cells[5].textContent;
+            document.getElementById('vendedor').value = cells[6].textContent;
+            document.getElementById('comissao').value = cells[7].textContent.replace('R$', '').trim();
+
+            pedidoTableBody.removeChild(row);
+        }
+
+        // Função para excluir um pedido
+        function excluirPedido(button) {
+            const row = button.parentElement.parentElement;
+            pedidoTableBody.removeChild(row);
+        }
+
+        // Função para pesquisar pela coluna selecionada
+        function pesquisarPedido() {
+            const filter = searchInput.value.toLowerCase();
+            const column = filterColumn.value;
+            const rows = pedidoTableBody.getElementsByTagName('tr');
+
+            for (let i = 0; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName('td');
+                let cellText = '';
+
+                switch (column) {
+                    case 'codigo':
+                        cellText = cells[0].textContent.toLowerCase();
+                        break;
+                    case 'dataCompra':
+                        cellText = cells[1].textContent.toLowerCase();
+                        break;
+                    case 'produto':
+                        cellText = cells[2].textContent.toLowerCase();
+                        break;
+                    case 'quantidade':
+                        cellText = cells[3].textContent.toLowerCase();
+                        break;
+                    case 'valorTotal':
+                        cellText = cells[4].textContent.toLowerCase();
+                        break;
+                    case 'cliente':
+                        cellText = cells[5].textContent.toLowerCase();
+                        break;
+                    case 'vendedor':
+                        cellText = cells[6].textContent.toLowerCase();
+                        break;
+                    case 'comissao':
+                        cellText = cells[7].textContent.toLowerCase();
+                        break;
+                }
+
+                // Se o texto da célula corresponder, exibe a linha; caso contrário, esconde-a
+                if (cellText.indexOf(filter) > -1) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

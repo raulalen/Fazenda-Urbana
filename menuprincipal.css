@@ -52,7 +52,7 @@ header {
 
 .sidebar {
     height: 100%;
-    width: 250px;
+    width: 320px;
     position: fixed;
     top: 0;
     left: 0;
@@ -100,7 +100,7 @@ header {
     color: black;
     text-align: center;
     padding-bottom: 18.5cm;
-    padding-right: 23cm;
+    padding-right: 20cm;
     position: fixed;
 }
 
@@ -108,7 +108,7 @@ header {
     display: flex;
     gap: 40px;
     padding-bottom: 7cm;
-    padding-right: 14.5cm;
+    padding-right: 12cm;
     position: fixed;
 }
 

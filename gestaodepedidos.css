@@ -52,6 +52,10 @@ header {
     padding-bottom: 12px;
 }
 
+h3 {
+    font-size: 28px;
+}
+
 /* Estilo das abas */
 .tab {
     display: none;
@@ -102,8 +106,6 @@ header {
 .tab-buttons .back-button:hover {
     background-color: #556080; /* Cor mais escura ao passar o mouse */
 }
-
-
 
 /* Estilo da tabela de pedidos */
 table {
@@ -157,6 +159,7 @@ button.submit-button {
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
+    font-size: 18px;
 }
 
 button.submit-button:hover {

@@ -156,10 +156,12 @@ button.submit-button {
     background-color: #4CAF50; /* Cor verde */
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 8px 12px; /* Ajusta o tamanho do botão */
     cursor: pointer;
     border-radius: 5px;
-    font-size: 18px;
+    font-size: 16px; /* Ajusta o tamanho da fonte */
+    width: 625px;
+    margin-top: 12px; /* Adiciona o espaçamento acima do botão */
 }
 
 button.submit-button:hover {
@@ -180,16 +182,25 @@ form {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    align-items: flex-start; /* Alinha os itens do formulário à esquerda */
+    max-width: 600px; /* Define a largura máxima */
+    margin: 0 auto; /* Centraliza o formulário */
 }
 
 form label {
     font-weight: bold;
+    display: flex; /* Utiliza flex para alinhar os rótulos e campos */
+    flex-direction: row; /* Rótulo e campo na mesma linha */
+    align-items: center;
+    gap: 10px; /* Espaço entre o texto e o campo */
+    width: 100%;
 }
 
 form input, form button {
-    padding: 8px;
+    padding: 6px 12px; /* Ajusta o padding para diminuir o tamanho */
     border-radius: 5px;
     border: 1px solid #ddd;
+    width: 100%; /* Faz com que os inputs e botões ocupem a largura disponível */
 }
 
 /* Estilo dos campos de valor total e comissão */

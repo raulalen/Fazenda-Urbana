@@ -34,7 +34,14 @@ a {
     color: white;
     text-decoration: none;
     font-size: 18px;
+    transition: text-shadow 0.3s ease-in-out; /* Suaviza a transição da sombra */
 }
+
+/* Sombra no nome UrbanFarm ao passar o mouse */
+a:hover {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Ajuste os valores de sombra conforme necessário */
+}
+
 
 .img-top-bar{
     width: 22px;

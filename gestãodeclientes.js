@@ -46,18 +46,35 @@ function showNotification(type) {
 
 // Formatação do valor total e cálculo da comissão
 valorTotalInput.addEventListener('input', function () {
-    const valor = parseFloat(valorTotalInput.value.replace(/[^\d,]/g, '').replace(',', '.')); // Remove caracteres indesejados e formata como número
-    if (!isNaN(valor)) {
-        valorTotalInput.value = `R$ ${valor.toFixed(2)}`;
-        calcularComissao(valor);
+    let valor = valorTotalInput.value.replace('R$', '').trim(); // Remove o 'R$' antes de formatar
+
+    // Remove qualquer caractere que não seja número, vírgula ou ponto
+    valor = valor.replace(/[^\d,\.]/g, '');
+
+    // Evita que o usuário insira mais de uma vírgula ou ponto
+    if ((valor.match(/,/g) || []).length > 1 || (valor.match(/\./g) || []).length > 1) {
+        valor = valor.slice(0, -1); // Remove o último caractere inválido
     }
+
+    // Converte para número após a formatação, mas não altera o campo enquanto o usuário digita
+    const valorNumerico = parseFloat(valor.replace(',', '.'));
+
+    // Verifica se o valor é válido e se é um número
+    if (!isNaN(valorNumerico)) {
+        calcularComissao(valorNumerico);
+    }
+
+    // Mantém o valor sem formatação de moeda, mas com 'R$' no início
+    valorTotalInput.value = `R$ ${valor}`;
 });
 
 // Calcula a comissão automaticamente (5% do valor total)
 function calcularComissao(valorTotal) {
     const comissao = valorTotal * 0.05;
-    comissaoInput.value = `R$ ${comissao.toFixed(2)}`;
+    comissaoInput.value = `R$ ${comissao.toFixed(2).replace('.', ',')}`;
 }
+
+
 
 // Função para adicionar um novo pedido na tabela
 pedidoForm.addEventListener('submit', function (event) {
@@ -127,7 +144,7 @@ function editarPedido(button) {
     document.getElementById('dataCompra').value = cells[1].textContent;
     document.getElementById('produto').value = cells[2].textContent;
     document.getElementById('quantidade').value = cells[3].textContent;
-    document.getElementById('valorTotal').value = cells[4].textContent.replace('R$', '').trim();
+    document.getElementById('valorTotal').value = cells[4].textContent.replace('R$', '').trim().replace(',', '.');
     document.getElementById('cliente').value = cells[5].textContent;
     document.getElementById('vendedor').value = cells[6].textContent;
 
@@ -144,14 +161,13 @@ function editarPedido(button) {
     showTab('adicionar');
 }
 
-// Função para excluir um pedido
+// Função para excluir um pedido sem confirmação
 function excluirPedido(button) {
-    if (confirm('Você tem certeza que deseja excluir este pedido?')) {
-        const row = button.parentElement.parentElement;
-        pedidoTableBody.removeChild(row);
-        showNotification('delete');
-    }
+    const row = button.parentElement.parentElement;
+    pedidoTableBody.removeChild(row);
+    showNotification('delete');
 }
+
 
 // Função para pesquisar pedidos
 function pesquisarPedido() {

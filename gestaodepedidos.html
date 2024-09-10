@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Pedidos</title>
-    <link rel="stylesheet" href="gestaodeclientes.css">
+    <link rel="stylesheet" href="gestaodepedidos.css">
 </head>
 <body>
 
@@ -17,8 +17,11 @@
 
     <!-- Abas para Navegação -->
     <div class="tab-buttons">
-        <button class="tab-button" onclick="showTab('adicionar')">Adicionar Pedidos</button>
-        <button class="tab-button" onclick="showTab('visualizacao')">Pedidos</button>
+        <button class="back-button" onclick="window.location.href='menuprincipal.html'">Retornar</button>
+        <div class="tab-buttons-left">
+            <button class="tab-button" onclick="showTab('adicionar')">Adicionar Pedidos</button>
+            <button class="tab-button" onclick="showTab('visualizacao')">Verificar Pedidos</button>
+        </div>
     </div>
 
     <!-- Abas -->

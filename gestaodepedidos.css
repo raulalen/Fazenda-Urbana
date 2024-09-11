@@ -62,6 +62,7 @@ h3 {
     padding: 20px;
 }
 
+
 .tab-buttons {
     display: flex;
     justify-content: space-between; /* Distribui os botões ao longo do contêiner */
@@ -160,7 +161,7 @@ button.submit-button {
     cursor: pointer;
     border-radius: 5px;
     font-size: 16px; /* Ajusta o tamanho da fonte */
-    width: 625px;
+    width: 100%;
     margin-top: 12px; /* Adiciona o espaçamento acima do botão */
 }
 
@@ -184,7 +185,12 @@ form {
     gap: 10px;
     align-items: flex-start; /* Alinha os itens do formulário à esquerda */
     max-width: 600px; /* Define a largura máxima */
-    margin: 0 auto; /* Centraliza o formulário */
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 form label {
@@ -193,19 +199,19 @@ form label {
     flex-direction: row; /* Rótulo e campo na mesma linha */
     align-items: center;
     gap: 10px; /* Espaço entre o texto e o campo */
-    width: 100%;
+    width: 95%;
 }
 
 form input, form button {
     padding: 6px 12px; /* Ajusta o padding para diminuir o tamanho */
     border-radius: 5px;
     border: 1px solid #ddd;
-    width: 100%; /* Faz com que os inputs e botões ocupem a largura disponível */
+    width: 95%; /* Faz com que os inputs e botões ocupem a largura disponível */
 }
 
 /* Estilo dos campos de valor total e comissão */
 input#valorTotal, input#comissao {
-    width: 100%;
+    width: 95%;
 }
 
 /* Estilo das notificações */

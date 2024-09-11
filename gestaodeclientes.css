@@ -206,7 +206,7 @@ form {
     flex-wrap: wrap; /* Permite que os itens se movam para a linha seguinte */
     gap: 30px; /* Espaço entre os itens do formulário */
     max-width: 1000px; /* Ajuste o tamanho conforme necessário */
-    margin: 30px auto;
+    margin: 0px auto;
     padding: 25px;
     border: 1px solid #ddd;
     border-radius: 10px;

@@ -5,7 +5,6 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #d4d5d7;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -31,8 +30,6 @@ a {
     cursor: pointer;
     display: flex;
     align-items: center; /* Alinha verticalmente a imagem e o texto dentro da tag <a> */
-    color: white;
-    text-decoration: none;
     font-size: 18px;
     transition: text-shadow 0.3s ease-in-out; /* Suaviza a transição da sombra */
 }
@@ -42,8 +39,7 @@ a:hover {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Ajuste os valores de sombra conforme necessário */
 }
 
-
-.img-top-bar{
+.img-top-bar {
     width: 22px;
     height: 22px;
     padding-right: 7px;
@@ -57,72 +53,69 @@ header {
     padding-bottom: 12px;
 }
 
-.sidebar {
-    height: 100%;
-    width: 320px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #6680a2;
-    color: white;
-    padding-top: 350px;
-    text-align: center;
-}
-
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-
-.sidebar ul li a {
-    text-decoration: none;
-    color: white;
-    display: block;
-    padding: 20px 20px;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-.sidebar ul li a:hover {
-    background-color: #556080;
-}
-
-.undertext {
+.sub-header {
+    background-color: #f0f0f0;
     display: flex;
-    align-items: center;
-    font-size: 12px;
     justify-content: center;
-    color: #b7b8b9;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding-top: 9cm;
-    
+    align-items: center;
+    height: 51px;
+    position: fixed;
+    top: 54px; /* Ajuste conforme necessário para garantir que fique logo abaixo da top-bar */
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.sub-header-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.sub-header-list li {
+    margin: 0 15px;
+}
+
+.sub-header-list a {
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.sub-header-list a:hover {
+    text-decoration: none;
 }
 
 /*----------------------------------------CAIXAS-----------------------------------------------*/
 
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px; /* Ajuste o valor para controlar o espaço entre a sub-header e o título */
+}
+
 .section-title {
-    font-size: 48px;
+    font-size: 56px;
     font-weight: bold;
-    color: black;
-    text-align: center;
-    padding-bottom: 18.5cm;
-    padding-right: 20cm;
+    color: #333;
+    margin-bottom: 20px; /* Ajuste o valor para controlar o espaço entre o título e as caixas */
 }
 
 .container {
-    display: flex;
-    gap: 40px;
-    padding-bottom: 7cm;
-    padding-right: 12cm;
-    position: fixed;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Cria duas colunas de largura igual */
+    gap: 20px; /* Espaço entre as caixas */
+    padding: 20px; /* Espaço interno do contêiner */
+    max-width: 1000px; /* Define a largura máxima do contêiner */
+    width: 100%; /* Garante que o contêiner ocupe toda a largura disponível */
 }
 
 .box {
     background-color: #6680a2; /* Fundo azul da caixa */
     border-radius: 15px; /* Bordas arredondadas da caixa */
     padding: 20px;
-    width: 320px; /* Aumentar a largura para acomodar o conteúdo */
     transition: background-color 0.2s ease-in-out;
 }
 
@@ -163,3 +156,4 @@ header {
     margin-top: 10px;
     text-align: left;
 }
+    

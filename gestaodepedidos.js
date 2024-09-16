@@ -5,17 +5,18 @@ const filterColumn = document.getElementById('filterColumn');
 const successNotification = document.getElementById('successNotification');
 const editNotification = document.getElementById('editNotification');
 const deleteNotification = document.getElementById('deleteNotification');
-const dataCompraInput = document.getElementById('dataCompra');
 const valorTotalInput = document.getElementById('valorTotal');
 const comissaoInput = document.getElementById('comissao');
 const submitButton = document.getElementById('submitButton');
 let editingRow = null;
 
+// Gera um código aleatório alfanumérico de 5 dígitos
+function gerarCodigo() {
+    return Math.random().toString(36).substr(2, 5).toUpperCase();
+}
+
 // Define a data atual no campo de data de compra
 document.addEventListener('DOMContentLoaded', function () {
-    const hoje = new Date().toISOString().split('T')[0]; // Obtém a data no formato YYYY-MM-DD
-    dataCompraInput.value = hoje;
-
     // Exibe a aba de visualização por padrão
     showTab('adicionar');
 });
@@ -74,14 +75,12 @@ function calcularComissao(valorTotal) {
     comissaoInput.value = `R$ ${comissao.toFixed(2).replace('.', ',')}`;
 }
 
-
-
 // Função para adicionar um novo pedido na tabela
 pedidoForm.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    const codigo = document.getElementById('codigo').value;
-    const dataCompra = dataCompraInput.value;
+    const codigo = gerarCodigo();
+    const dataCompra = new Date().toISOString().split('T')[0]; // Data de hoje
     const produto = document.getElementById('produto').value;
     const quantidade = document.getElementById('quantidade').value;
     const valorTotal = valorTotalInput.value;
@@ -130,7 +129,6 @@ pedidoForm.addEventListener('submit', function (event) {
 
         pedidoTableBody.appendChild(newRow);
         pedidoForm.reset();
-        dataCompraInput.value = new Date().toISOString().split('T')[0]; // Define a data atual novamente
         showNotification('success');
     }
 });
@@ -167,7 +165,6 @@ function excluirPedido(button) {
     pedidoTableBody.removeChild(row);
     showNotification('delete');
 }
-
 
 // Função para pesquisar pedidos
 function pesquisarPedido() {

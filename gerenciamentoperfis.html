@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="gerenciamentoperfis.css">
+    <title>UF - Gerenciamento de Perfis</title>
+    <link rel="shortcut icon" type="icon" href="imagens/logo.png">
+</head>
+<body>
+
+    <header class="top-bar">
+        <a href="menuprincipal.html">
+        <img class="img-top-bar" src="imagens/logo.png" alt="logoUrbanFarm">
+        UrbanFarm
+        </a>
+    </header>
+
+    <!-- Abas para Navegação -->
+    <div class="tab-buttons">
+        <button class="back-button" onclick="window.location.href='menuprincipal.html'">Retornar</button>
+        <div class="tab-buttons-left">
+            <button class="tab-button" onclick="showTab('adicionar')">Adicionar Perfil</button>
+            <button class="tab-button" onclick="showTab('visualizacao')">Ver Perfis</button>
+        </div>
+    </div>
+
+    <!-- Abas -->
+    <div id="visualizacao" class="tab">
+        <!-- Filtros de Pesquisa -->
+        <div class="search-container">
+            <label for="searchInput" class="search-label">Buscar:</label>
+            <input type="text" id="searchInput" class="search-input" placeholder="Digite para pesquisar..." onkeyup="pesquisarPerfil()">
+            
+            <label for="filterColumn" class="filter-label">Filtro:</label>
+            <select id="filterColumn" class="filter-select">
+                <option value="usuario">Nome de Usuário</option>
+                <option value="email">E-mail</option>
+            </select>
+        </div>
+
+        <table id="profileTable">
+            <thead>
+                <tr>
+                    <th>Nome de Usuário</th>
+                    <th>E-mail</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- As linhas de perfil serão adicionadas aqui -->
+            </tbody>
+        </table>
+    </div>
+    
+    <div id="adicionar" class="tab">
+        <form id="profileForm">
+            <h3>Novo Perfil</h3>
+            <label for="usuario">Nome de Usuário</label>
+            <input type="text" id="usuario" required>
+            <label for="email">E-mail:</label>
+            <input type="text" id="email" required>
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" required>
+            <button type="submit" id="submitButton" class="submit-button">Adicionar Perfil</button>
+        </form>
+    </div>
+
+    <!-- Notificações -->
+    <div id="successNotification" class="notification hidden">Perfil adicionado com sucesso!</div>
+    <div id="editNotification" class="notification hidden">Perfil editado com sucesso!</div>
+    <div id="deleteNotification" class="notification hidden">Perfil excluído com sucesso!</div>
+
+    <!-- Referência ao arquivo JavaScript externo -->
+    <script src="gerenciamentoperfis.js"></script>
+</body>
+</html>

@@ -99,7 +99,7 @@ header {
 .section-title {
     font-size: 56px;
     font-weight: bold;
-    color: #333;
+    color: black;
     margin-bottom: 20px; /* Ajuste o valor para controlar o espaço entre o título e as caixas */
 }
 

@@ -1,0 +1,284 @@
+/* Estilo geral do corpo */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 30px; /* Ajuste a altura conforme necessário */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #8096b2;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    text-shadow: white;
+    text-align: center;
+}
+
+a {
+    color: white;
+    text-decoration: none; /* Remove o sublinhado padrão */
+    cursor: pointer;
+    display: flex;
+    align-items: center; /* Alinha verticalmente a imagem e o texto dentro da tag <a> */
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: text-shadow 0.3s ease-in-out; /* Suaviza a transição da sombra */
+}
+
+/* Sombra no nome UrbanFarm ao passar o mouse */
+a:hover {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Ajuste os valores de sombra conforme necessário */
+}
+
+.img-top-bar{
+    width: 22px;
+    height: 22px;
+    padding-right: 7px;
+}
+
+header {
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+h3 {
+    font-size: 28px;
+}
+
+/* Estilo das abas */
+.tab {
+    display: none;
+    padding: 20px;
+}
+
+
+.tab-buttons {
+    display: flex;
+    justify-content: space-between; /* Distribui os botões ao longo do contêiner */
+    padding: 10px;
+    background-color: #f0f0f0;
+    margin-top: 50px;
+}
+
+.tab-buttons .tab-buttons-left {
+    display: flex;
+    align-items: center;
+}
+
+.tab-buttons .tab-button {
+    background-color: #8096b2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.tab-buttons .tab-button:hover {
+    background-color: #556080;
+}
+
+.tab-buttons .tab-button.active {
+    background-color: #556080;
+}
+
+.tab-buttons .back-button {
+    background-color: #8096b2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: auto; /* Move o botão para o lado esquerdo */
+}
+
+.tab-buttons .back-button:hover {
+    background-color: #556080; /* Cor mais escura ao passar o mouse */
+}
+
+/* Estilo da tabela de pedidos */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+td {
+    vertical-align: middle;
+}
+
+button.editar {
+    background-color: #ff9800; /* Cor laranja para edição */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button.editar:hover {
+    background-color: #e68900;
+}
+
+button.excluir {
+    background-color: #f44336; /* Cor vermelha para exclusão */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button.excluir:hover {
+    background-color: #da190b;
+}
+
+/* Estilo do botão de adicionar pedido */
+button.submit-button {
+    background-color: #4CAF50; /* Cor verde */
+    color: white;
+    border: none;
+    padding: 8px 12px; /* Ajusta o tamanho do botão */
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px; /* Ajusta o tamanho da fonte */
+    width: 100%;
+    margin-top: 12px; /* Adiciona o espaçamento acima do botão */
+}
+
+button.submit-button:hover {
+    background-color: #45a049; /* Cor verde mais escura ao passar o mouse */
+}
+
+/* Estilo do botão de editar pedido */
+button.edit-button {
+    background-color: #ff9800; /* Cor laranja para edição */
+}
+
+button.edit-button:hover {
+    background-color: #e68900;
+}
+
+/* Estilo do formulário de pedido */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start; /* Alinha os itens do formulário à esquerda */
+    max-width: 600px; /* Define a largura máxima */
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 120px;
+}
+
+form label {
+    font-weight: bold;
+    display: flex; /* Utiliza flex para alinhar os rótulos e campos */
+    flex-direction: row; /* Rótulo e campo na mesma linha */
+    align-items: center;
+    gap: 10px; /* Espaço entre o texto e o campo */
+    width: 95%;
+}
+
+form input, form button {
+    padding: 6px 12px; /* Ajusta o padding para diminuir o tamanho */
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 95%; /* Faz com que os inputs e botões ocupem a largura disponível */
+}
+
+/* Estilo das notificações */
+.notification {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    color: white;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.notification.visible {
+    display: block;
+    opacity: 1;
+}
+
+.notification.hidden {
+    display: none;
+    opacity: 0;
+}
+
+#successNotification {
+    background-color: #4CAF50;
+}
+
+#editNotification {
+    background-color: #ff9800;
+}
+
+#deleteNotification {
+    background-color: #f44336;
+}
+
+/* Estilo do contêiner de busca e filtro */
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Estilo do rótulo da busca */
+.search-label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* Estilo do campo de busca */
+.search-input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    flex: 1;
+    max-width: 300px; /* Limitar a largura máxima */
+}
+
+/* Estilo do rótulo do filtro */
+.filter-label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* Estilo do seletor de filtro */
+.filter-select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    max-width: 200px; /* Limitar a largura máxima */
+}

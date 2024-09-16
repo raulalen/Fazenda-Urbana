@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="gestaodefornecedores.css">
+    <title>UF - Gestão de Fornecedores</title>
+    <link rel="shortcut icon" type="icon" href="imagens/logo.png">
+</head>
+<body>
+
+    <header class="top-bar">
+        <a href="menuprincipal.html">
+        <img class="img-top-bar" src="imagens/logo.png" alt="logoUrbanFarm">
+        UrbanFarm
+        </a>
+    </header>
+
+    <!-- Abas para Navegação -->
+    <div class="tab-buttons">
+        <button class="back-button" onclick="window.location.href='menuprincipal.html'">Retornar</button>
+        <div class="tab-buttons-left">
+            <button class="tab-button" onclick="showTab('adicionar')">Adicionar Fornecedor</button>
+            <button class="tab-button" onclick="showTab('visualizacao')">Ver Fornecedores</button>
+        </div>
+    </div>
+
+    <div id="adicionar" class="tab">
+        <form id="fornecedorForm">
+        <div class="esquerda">
+            <h3>Novo Fornecedor</h3>
+            <label for="nomeEmpresa">Nome Empresa:</label>
+            <input type="text" id="nomeEmpresa" required>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" required>
+            <label for="cnpj">CPNJ:</label>
+            <input type="text" id="cnpj" required>
+            <label for="inscricao">Inscrição Estadual:</label>
+            <input type="text" id="inscricao" required>
+            <label for="telefone">Número de Telefone:</label>
+            <input type="tel" id="telefone" required>
+        </div>
+        <div class="direita">
+            <div class="rua-space">
+                <label for="rua">Rua:</label>
+            </div>
+            <input type="text" id="rua" required>
+            <label for="cep">CEP:</label>
+            <input type="text" id="cep" required>
+            <label for="numero">Número:</label>
+            <input type="text" id="numero" required>
+            <label for="bairro">Bairro:</label>
+            <input type="text" id="bairro">
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" required>
+            <label for="estado">Estado:</label>
+            <input type="text" id="estado" required>
+            <button type="submit" id="submitButton" class="submit-button">Adicionar Fornecedor</button>
+        </div>
+    </div>
+    </form>
+    
+    <!-- Abas -->
+    <div id="visualizacao" class="tab">
+        <!-- Filtros de Pesquisa -->
+        <div class="search-container">
+            <label for="searchInput" class="search-label">Buscar:</label>
+            <input type="text" id="searchInput" class="search-input" placeholder="Digite para pesquisar..." onkeyup="pesquisarfornecedor()">
+            
+            <label for="filterColumn" class="filter-label">Filtro:</label>
+            <select id="filterColumn" class="filter-select">
+                <option value="nomeCompleto">Nome Empresa</option>
+                <option value="email">E-mail</option>
+                <option value="cnpj">CPNJ</option>
+                <option value="inscricao">Inscrição Estadual</option>
+                <option value="telefone">Número de Telefone</option>
+                <option value="rua">Rua</option>
+                <option value="cep">CEP</option>
+                <option value="numero">Número</option>
+                <option value="bairro">Bairro</option>
+                <option value="cidade">Cidade</option>
+                <option value="estado">Estado</option>
+            </select>
+        </div>
+
+        <table id="fornecedorTable">
+            <thead>
+                <tr>
+                    <th>Nome Empresa</th>
+                    <th>E-mail</th>
+                    <th>CNPJ</th>
+                    <th>Inscrição Estadual</th>
+                    <th>Telefone</th>
+                    <th>Rua</th>
+                    <th>CEP</th>
+                    <th>Número</th>
+                    <th>Bairro</th>
+                    <th>Cidade</th>
+                    <th>Estado</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- As linhas de fornecedors serão adicionadas aqui -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Notificações -->
+    <div id="successNotification" class="notification hidden">Fornecedor criado com sucesso!</div>
+    <div id="editNotification" class="notification hidden">Fornecedor editado com sucesso!</div>
+    <div id="deleteNotification" class="notification hidden">Fornecedor excluído com sucesso!</div>    
+
+    <!-- Referência ao arquivo JavaScript externo -->
+    <script src="gestaodefornecedores.js"></script>
+</body>
+</html>

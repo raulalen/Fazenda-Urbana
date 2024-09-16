@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     dataCompraInput.value = hoje;
 
     // Exibe a aba de visualização por padrão
-    showTab('visualizacao');
+    showTab('adicionar');
 });
 
 // Função para mostrar a notificação de sucesso

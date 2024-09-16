@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const hoje = new Date().toISOString().split('T')[0];
     dataNascimentoInput.value = hoje;
 
-    showTab('visualizacao');
+    showTab('adicionar');
 });
 
 // Função para mostrar a notificação de sucesso
@@ -54,7 +54,7 @@ clienteForm.addEventListener('submit', function (event) {
     const rua = document.getElementById('rua').value;
     const cep = document.getElementById('cep').value;
     const numero = document.getElementById('numero').value;
-    const complemento = document.getElementById('complemento').value;
+    const bairro = document.getElementById('bairro').value;
     const cidade = document.getElementById('cidade').value;
     const estado = document.getElementById('estado').value;
 
@@ -73,7 +73,7 @@ clienteForm.addEventListener('submit', function (event) {
             <td data-label="Rua">${rua}</td>
             <td data-label="CEP">${cep}</td>
             <td data-label="Número">${numero}</td>
-            <td data-label="Complemento">${complemento}</td>
+            <td data-label="Bairro">${bairro}</td>
             <td data-label="Cidade">${cidade}</td>
             <td data-label="Estado">${estado}</td>
             <td data-label="Ações">
@@ -97,7 +97,7 @@ clienteForm.addEventListener('submit', function (event) {
             <td data-label="Rua">${rua}</td>
             <td data-label="CEP">${cep}</td>
             <td data-label="Número">${numero}</td>
-            <td data-label="Complemento">${complemento}</td>
+            <td data-label="Bairro">${bairro}</td>
             <td data-label="Cidade">${cidade}</td>
             <td data-label="Estado">${estado}</td>
             <td data-label="Ações">
@@ -124,7 +124,7 @@ function editarCliente(button) {
     document.getElementById('rua').value = cells[5].textContent;
     document.getElementById('cep').value = cells[6].textContent;
     document.getElementById('numero').value = cells[7].textContent;
-    document.getElementById('complemento').value = cells[8].textContent;
+    document.getElementById('bairro').value = cells[8].textContent;
     document.getElementById('cidade').value = cells[9].textContent;
     document.getElementById('estado').value = cells[10].textContent;
 
@@ -178,7 +178,7 @@ function pesquisarCliente() {
             case 'numero':
                 match = cells[7].textContent.toUpperCase().includes(filter);
                 break;
-            case 'complemento':
+            case 'bairro':
                 match = cells[8].textContent.toUpperCase().includes(filter);
                 break;
             case 'cidade':

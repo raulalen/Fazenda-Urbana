@@ -1,40 +1,44 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="login.css">
     <title>UF - Login</title>
-    <link rel="shortcut icon" type="icon" href="imagens/logo.png">
+    <link rel="shortcut icon" type="icon" href="imagens/celeirourbanfarm.png">
 </head>
-
 <body>
 
-<header class="top-bar">UrbanFarm</header>
-<header class="bottom-bar">Plante sonhos, colha inovações. </header>
+    <header class="top-bar">
+        <img class="img-top-bar" src="imagens/logonovaurbanfarmpng.png" alt="logoUrbanFarm">
+    </header>
 
-<img src="imagens/logo.png" alt="logoUrbanFarm">
+    <nav class="sub-header">
+        <ul class="sub-header-list">
+            <li><a>"Revolucionando o cultivo urbano: tecnologia que aproxima você da colheita perfeita, onde quer que esteja."</a></li>
+        </ul>
+    </nav>
 
-    <div class="container">   
-        <div class="caixalogin">
-
-            <h2>Login</h2>
-            <div class="login-container">
-                <input type="text" id="email" placeholder="E-mail" aria-label="E-mail">
-                <input type="password" id="password" placeholder="Senha" aria-label="Senha">
-            </div>
-
-            <div class="checkbox-container">
-                <span class="checkbox-label">Manter-me conectado</span>
-                <input type="checkbox" id="checkbox1">
-                <a href="#">Esqueceu a senha?</a>
-            </div>
-
-            <button type="submit">Login</button>
-
-            <div class="undertext">
-                UrbanFarm © 2024 
-            </div>
-        </div>   
-    </div>   
+    <form class="Login">
+        <h2>Login</h2>
+        <div class="box-user">
+            <input type="text" name="email" required>
+            <label>E-mail</label>
+        </div>
+        <div class="box-user">
+            <input type="password" name="senha" required>
+            <label>Senha</label>
+        </div>
+        <div>
+            <a href="#" class="forget">Esqueceu a senha?</a>
+        </div>
+        <a href="#" class="btn">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Entrar
+        </a>
+    </form>
 </body>
 </html>

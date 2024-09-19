@@ -1,11 +1,8 @@
-html, body {
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial, Helvetica, sans-serif;
+    background: #172031;
 }
 
 .top-bar {
@@ -17,32 +14,16 @@ html, body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #8096b2;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #00000080;
     z-index: 1000;
     text-shadow: white;
     text-align: center;
 }
 
-a {
-    color: white;
-    text-decoration: none; /* Remove o sublinhado padrão */
-    cursor: pointer;
-    display: flex;
-    align-items: center; /* Alinha verticalmente a imagem e o texto dentro da tag <a> */
-    font-size: 18px;
-    transition: text-shadow 0.3s ease-in-out; /* Suaviza a transição da sombra */
-}
-
-/* Sombra no nome UrbanFarm ao passar o mouse */
-a:hover {
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Ajuste os valores de sombra conforme necessário */
-}
-
-.img-top-bar {
-    width: 22px;
-    height: 22px;
-    padding-right: 7px;
+.img-top-bar{
+    width: 100px;
+    height: 100px;
+    padding-top: 10px;
 }
 
 header {
@@ -54,11 +35,11 @@ header {
 }
 
 .sub-header {
-    background-color: #f0f0f0;
+    background-color: #00000049;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 51px;
+    height: 54px;
     position: fixed;
     top: 54px; /* Ajuste conforme necessário para garantir que fique logo abaixo da top-bar */
     left: 0;
@@ -78,7 +59,7 @@ header {
 }
 
 .sub-header-list a {
-    color: black;
+    color: white;
     text-decoration: none;
     font-size: 16px;
 }
@@ -93,13 +74,13 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px; /* Ajuste o valor para controlar o espaço entre a sub-header e o título */
+    margin-top: 120px; /* Ajuste o valor para controlar o espaço entre a sub-header e o título */
 }
 
 .section-title {
     font-size: 56px;
     font-weight: bold;
-    color: black;
+    color: white;
     margin-bottom: 20px; /* Ajuste o valor para controlar o espaço entre o título e as caixas */
 }
 
@@ -113,14 +94,14 @@ header {
 }
 
 .box {
-    background-color: #6680a2; /* Fundo azul da caixa */
+    background-color: #00000080; /* Fundo azul da caixa */
     border-radius: 15px; /* Bordas arredondadas da caixa */
     padding: 20px;
     transition: background-color 0.2s ease-in-out;
 }
 
 .box:hover {
-    background-color: #556080;
+    background-color: #000000cc;
 }
 
 .box-content {
@@ -131,7 +112,7 @@ header {
 
 .image img {
     border-radius: 10px; /* Bordas arredondadas da imagem */
-    background-color: #8096b2; /* Fundo da imagem */
+    background-color: #172031; /* Fundo da imagem */
     padding: 5px;
     width: 80px; /* Ajustar conforme necessário */
     height: 80px; /* Ajustar conforme necessário */
@@ -149,11 +130,14 @@ header {
 }
 
 .description {
-    background-color: #8096b2; /* Fundo branco para a descrição */
+    background-color: #172031; /* Fundo branco para a descrição */
     border-radius: 10px; /* Bordas arredondadas */
     padding: 10px;
     color: white;
     margin-top: 10px;
     text-align: left;
 }
-    
+
+a {
+    text-decoration: none;
+}

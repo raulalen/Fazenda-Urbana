@@ -13,13 +13,47 @@
         <img class="img-top-bar" src="imagens/logonovaurbanfarmpng.png" alt="logoUrbanFarm">
     </header>
 
-    <!-- Abas para Navegação -->
-    <div class="tab-buttons">
-        <button class="back-button" onclick="window.location.href='menuprincipal.html'">Retornar</button>
-        <div class="tab-buttons-left">
-            <button class="tab-button" onclick="showTab('adicionar')">Adicionar Pedidos</button>
-            <button class="tab-button" onclick="showTab('visualizacao')">Ver Pedidos</button>
+    <div class="container">
+        <h1>Carrinho de Compras</h1>
+        <div class="tabs">
+            <button id="tab1" class="tab-button active">Carrinho de Compras</button>
+            <button id="tab2" class="tab-button">Visualização de Compras</button>
         </div>
+
+        <div id="carrinho" class="tab-content active">            
+            <div class="carrinho-container">
+                <div class="adicionar-itens">
+                    <h2>Adicione itens:</h2>
+                    <ul id="produtos"></ul>
+                    <h3>Total: R$ <span id="total">0.00</span></h3>
+                    <button id="finalizar" onclick="finalizarCompra()">Finalizar Compra</button>
+                </div>
+
+                <div class="previsao">
+                    <h3>Pré-visualização:</h3>
+                    <ul id="previsao-list"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="visualizacao" class="tab-content">
+            <h2>Compras Realizadas</h2>
+            <table id="visualizacao-tabela">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Data</th>
+                        <th>Itens</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- As linhas das compras realizadas serão adicionadas dinamicamente aqui -->
+                </tbody>
+            </table>
+        </div>        
     </div>
 
-    
+    <script src="gestaodepedidos.js"></script>
+</body>
+</html>

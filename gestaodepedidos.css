@@ -1,3 +1,4 @@
+/* Estilo geral do corpo */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -34,58 +35,167 @@ header {
     padding-bottom: 12px;
 }
 
-h3 {
-    font-size: 28px;
-}
-
-/* Estilo das abas */
-.tab {
-    display: none;
+.container {
+    max-width: 1000px; /* Aumentado para mais largura */
+    margin: auto;
+    background: white;
     padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.tab-buttons {
+.tabs {
     display: flex;
-    justify-content: space-between; /* Distribui os botões ao longo do contêiner */
-    padding: 10px;
-    background-color: #00000049;
-    margin-top: 53px;
+    justify-content: space-around;
+    margin-bottom: 20px;
 }
 
-.tab-buttons .tab-buttons-left {
+.tab-button {
+    flex: 1;
+    padding: 10px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.tab-button.active {
+    background: #0056b3;
+}
+
+.tab-button:hover {
+    background: #0056b3;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.carrinho-container {
+    display: flex; /* Flexbox para as duas seções lado a lado */
+    justify-content: space-between; /* Espaçamento igual entre as colunas */
+    gap: 20px; /* Espaçamento entre as colunas */
+}
+
+.adicionar-itens, .previsao {
+    width: 48%; /* Mantido a largura */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+}
+
+li div {
     display: flex;
     align-items: center;
 }
 
-.tab-buttons .tab-button {
-    background-color: #00000049;
+li button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    min-width: 30px;
+}
+
+li .quantidade {
+    min-width: 30px;
+    text-align: center;
+    line-height: 1;
+}
+
+li:hover {
+    background: #f9f9f9;
+}
+
+button {
+    background: #28a745;
     color: white;
     border: none;
-    padding: 10px 20px;
-    cursor: pointer;
     border-radius: 5px;
-    margin-left: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
-.tab-buttons .tab-button:hover {
-    background-color: #000000cc;
+button:hover {
+    background: #218838;
 }
 
-.tab-buttons .tab-button.active {
-    background-color: #000000cc;
+button#finalizar {
+    margin-top: 20px;
+    background: #007BFF;
 }
 
-.tab-buttons .back-button {
-    background-color: #00000049;
-    color: white;
+button#finalizar:hover {
+    background: #0056b3;
+}
+
+h3 {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #333;
+    font-size: 28px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.acao-button {
+    padding: 5px 10px;
     border: none;
-    padding: 10px 20px;
-    cursor: pointer;
     border-radius: 5px;
-    margin-right: auto; /* Move o botão para o lado esquerdo */
+    cursor: pointer;
+    color: white;
 }
 
-.tab-buttons .back-button:hover {
-    background-color: #000000cc;
+.acao-button.editar {
+    background-color: #ffc107;
+}
+
+.acao-button.excluir {
+    background-color: #dc3545;
 }
 

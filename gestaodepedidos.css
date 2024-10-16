@@ -53,6 +53,7 @@ header {
     display: flex;
     justify-content: space-around;
     margin-bottom: 20px;
+    gap: 20px; /* Reduzido o espaço entre os botões */
 }
 
 .tab-button {
@@ -96,6 +97,7 @@ header {
     background-color: #f9f9f9;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
+
 
 ul {
     list-style: none;
@@ -148,11 +150,19 @@ button:hover {
 
 button#finalizar {
     margin-top: 20px;
-    background: #007BFF;
+    background: #28a745; /* Cor verde */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 4px 12px; /* Aumentar o tamanho do botão */
+    font-size: 16px; /* Aumentar o tamanho da fonte */
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
+/* Estilo ao passar o mouse sobre o botão */
 button#finalizar:hover {
-    background: #0056b3;
+    background: #218838; /* Tom de verde mais escuro */
 }
 
 h3 {
@@ -203,4 +213,3 @@ tr:hover {
 .acao-button.excluir {
     background-color: #dc3545;
 }
-

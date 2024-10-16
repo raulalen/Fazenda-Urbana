@@ -4,16 +4,16 @@ const produtos = [
     { nome: 'Laranja', preco: 1.80 },
     { nome: 'Tomate', preco: 3.00 },
     { nome: 'Cenoura', preco: 2.50 },
-    { nome: 'Pera', preco: 2.20 },      // Novo item
-    { nome: 'Manga', preco: 4.00 },     // Novo item
-    { nome: 'Kiwi', preco: 3.00 },      // Novo item
-    { nome: 'Batata', preco: 1.20 },    // Novo item
-    { nome: 'Berinjela', preco: 2.30 }   // Novo item
+    { nome: 'Pera', preco: 2.20 },
+    { nome: 'Manga', preco: 4.00 },
+    { nome: 'Kiwi', preco: 3.00 },
+    { nome: 'Batata', preco: 1.20 },
+    { nome: 'Berinjela', preco: 2.30 }
 ];
 
 let carrinho = [];
 let total = 0;
-let compraAtual = null; // Para armazenar a compra que está sendo editada
+let compraAtual = null;
 
 // Evento para alternar entre abas
 document.getElementById('tab1').addEventListener('click', function() {
@@ -26,10 +26,23 @@ document.getElementById('tab2').addEventListener('click', function() {
 
 // Função para mostrar a aba 
 function showTab(tabName) {
+    // Remover a classe 'active' de todos os conteúdos das abas
     document.querySelectorAll('.tab-content').forEach(tab => {
         tab.classList.remove('active');
     });
+    // Adicionar a classe 'active' ao conteúdo da aba atual
     document.getElementById(tabName).classList.add('active');
+
+    // Remover a classe 'active' de todos os botões das abas
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.classList.remove('active');
+    });
+    // Adicionar a classe 'active' ao botão correspondente à aba atual
+    if (tabName === 'carrinho') {
+        document.getElementById('tab1').classList.add('active');
+    } else if (tabName === 'visualizacao') {
+        document.getElementById('tab2').classList.add('active');
+    }
 }
 
 // Carregar produtos na lista
@@ -73,19 +86,17 @@ function finalizarCompra() {
             updateTotal();
             updatePrevisaoList();
 
-            // Redefinir a compra atual
-            compraAtual = null; // Redefinir para evitar modificações em compras já finalizadas
+            compraAtual = null;
             restaurarBotaoFinalizar();
-            limparCampos(); // Limpar campos após a edição
+            limparCampos();
             return;
         }
     }
 
-    const compraId = gerarIdAleatorio(); // Sempre gerar um novo ID para cada compra
+    const compraId = gerarIdAleatorio();
     const dataCompra = new Date().toLocaleDateString('pt-BR');
     const itensComprados = carrinho.map(item => `${item.nome} (x${item.quantidade})`).join(', ');
 
-    // Criar nova linha na tabela de visualização
     const novaLinha = document.createElement('tr');
     novaLinha.innerHTML = `
         <td>#${compraId}</td>
@@ -99,18 +110,15 @@ function finalizarCompra() {
     novaLinha.setAttribute('data-id', compraId);
     visualizacaoTabelaBody.appendChild(novaLinha);
 
-    // Limpar carrinho e total
     carrinho = [];
     total = 0;
     updateTotal();
     updatePrevisaoList();
 
-    // Redefinir quantidades
     produtos.forEach((_, index) => {
         document.getElementById(`quantidade-${index}`).innerText = '0';
     });
 
-    // Restaurar o botão para "Finalizar Compra"
     restaurarBotaoFinalizar();
 }
 
@@ -124,10 +132,9 @@ function editarCompra(id) {
         return;
     }
 
-    // Preencher o carrinho com os itens da compra selecionada
     const itens = linhaParaEditar.cells[2].innerText.split(', ');
 
-    carrinho = []; // Limpar o carrinho atual
+    carrinho = [];
 
     itens.forEach(item => {
         const [nome, quantidadeStr] = item.split(' (x');
@@ -136,7 +143,6 @@ function editarCompra(id) {
         
         if (produto) {
             carrinho.push({ nome: produto.nome, preco: produto.preco, quantidade });
-            // Atualizar a quantidade na interface
             const index = produtos.indexOf(produto);
             document.getElementById(`quantidade-${index}`).innerText = quantidade;
         }
@@ -146,15 +152,11 @@ function editarCompra(id) {
     updateTotal();
     updatePrevisaoList();
 
-    // Mudar o botão para "Editar Compra"
     const finalizarButton = document.getElementById('finalizar');
     finalizarButton.innerText = 'Editar Compra';
-    finalizarButton.style.backgroundColor = '#ffc107'; // Cor laranja
+    finalizarButton.style.backgroundColor = '#ffc107';
 
-    // Definir a compra atual
     compraAtual = id;
-
-    // Mostrar a aba de carrinho
     showTab('carrinho');
 }
 
@@ -162,17 +164,16 @@ function editarCompra(id) {
 function restaurarBotaoFinalizar() {
     const finalizarButton = document.getElementById('finalizar');
     finalizarButton.innerText = 'Finalizar Compra';
-    finalizarButton.style.backgroundColor = '#007BFF'; // Cor original
+    finalizarButton.style.backgroundColor = '#007BFF';
 }
 
 // Função para limpar campos após a edição
 function limparCampos() {
-    carrinho = []; // Limpa o carrinho
-    total = 0; // Zera o total
-    updateTotal(); // Atualiza o total exibido
-    updatePrevisaoList(); // Limpa a lista de previsão
+    carrinho = [];
+    total = 0;
+    updateTotal();
+    updatePrevisaoList();
 
-    // Redefinir quantidades
     produtos.forEach((_, index) => {
         document.getElementById(`quantidade-${index}`).innerText = '0';
     });
@@ -195,11 +196,9 @@ function addItem(index) {
     const produto = produtos[index];
     const quantidadeSpan = document.getElementById(`quantidade-${index}`);
 
-    // Atualizar quantidade no carrinho
     const quantidade = parseInt(quantidadeSpan.innerText) + 1;
     quantidadeSpan.innerText = quantidade;
 
-    // Adicionar ao carrinho
     const itemExistente = carrinho.find(item => item.nome === produto.nome);
     if (itemExistente) {
         itemExistente.quantidade++;
@@ -221,13 +220,11 @@ function removeItem(index) {
     if (quantidade > 0) {
         quantidadeSpan.innerText = quantidade - 1;
 
-        // Atualizar carrinho e total
         const itemExistente = carrinho.find(item => item.nome === produto.nome);
         if (itemExistente) {
             itemExistente.quantidade--;
             total -= produto.preco;
 
-            // Remover item do carrinho se a quantidade for 0
             if (itemExistente.quantidade === 0) {
                 carrinho = carrinho.filter(item => item.nome !== produto.nome);
             }
@@ -256,4 +253,4 @@ function updatePrevisaoList() {
 }
 
 // Carregar produtos ao iniciar
-carregarProdutos();
+window.onload = carregarProdutos;

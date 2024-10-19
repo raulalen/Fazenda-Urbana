@@ -215,6 +215,30 @@ h3 {
     font-size: 28px;
 }
 
+.filtro {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filtro label {
+    margin-right: 10px;
+    color: #333;
+}
+
+.filtro input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.filtro select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -254,4 +278,39 @@ tr:hover {
 
 .acao-button.excluir {
     background-color: #dc3545;
+}
+
+/* Estilo das notificações */
+.notification {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    color: white;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.notification.visible {
+    display: block;
+    opacity: 1;
+}
+
+.notification.hidden {
+    display: none;
+    opacity: 0;
+}
+
+#successNotification {
+    background-color: #4CAF50;
+}
+
+#editNotification {
+    background-color: #ff9800;
+}
+
+#deleteNotification {
+    background-color: #f44336;
 }

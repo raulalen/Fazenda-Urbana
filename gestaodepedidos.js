@@ -22,6 +22,7 @@ document.getElementById('tab1').addEventListener('click', function() {
 
 document.getElementById('tab2').addEventListener('click', function() {
     showTab('visualizacao');
+    atualizarTabelaVisualizacao(); // Atualiza a tabela ao abrir a aba
 });
 
 // Função para mostrar a aba 
@@ -76,13 +77,13 @@ function finalizarCompra() {
         return;
     }
 
-    // Se a compra atual já existir, atualiza a linha correspondente
     if (compraAtual) {
         const linhaParaEditar = visualizacaoTabelaBody.querySelector(`tr[data-id="${compraAtual}"]`);
         if (linhaParaEditar) {
             const itensComprados = carrinho.map(item => `${item.nome} (x${item.quantidade})`).join(', ');
             linhaParaEditar.cells[2].innerText = itensComprados;
             total = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
+            linhaParaEditar.cells[3].innerText = `R$ ${total.toFixed(2)}`; // Atualiza o valor total
             updateTotal();
             updatePrevisaoList();
 
@@ -96,12 +97,14 @@ function finalizarCompra() {
     const compraId = gerarIdAleatorio();
     const dataCompra = new Date().toLocaleDateString('pt-BR');
     const itensComprados = carrinho.map(item => `${item.nome} (x${item.quantidade})`).join(', ');
+    const valorTotal = total.toFixed(2); // Calcula o valor total do pedido
 
     const novaLinha = document.createElement('tr');
     novaLinha.innerHTML = `
         <td>#${compraId}</td>
         <td>${dataCompra}</td>
         <td>${itensComprados}</td>
+        <td>R$ ${valorTotal}</td> <!-- Exibe o valor total -->
         <td>
             <button class="acao-button editar" onclick="editarCompra('${compraId}')">Editar</button>
             <button class="acao-button excluir" onclick="excluirCompra('${compraId}')">Excluir</button>
@@ -240,7 +243,7 @@ function updateTotal() {
     document.getElementById('total').innerText = total.toFixed(2);
 }
 
-// Atualizar a lista de previsão
+// Atualizar lista de previsão
 function updatePrevisaoList() {
     const previsaoList = document.getElementById('previsao-list');
     previsaoList.innerHTML = '';
@@ -252,5 +255,49 @@ function updatePrevisaoList() {
     });
 }
 
-// Carregar produtos ao iniciar
-window.onload = carregarProdutos;
+// Função para filtrar a tabela com base na busca e no filtro selecionado
+function filtrarTabela() {
+    const buscaInput = document.getElementById('busca').value.toLowerCase();
+    const filtroSelect = document.getElementById('filtro').value;
+    const visualizacaoTabelaBody = document.querySelector('#visualizacao-tabela tbody');
+
+    // Obter todas as linhas da tabela
+    const linhas = visualizacaoTabelaBody.querySelectorAll('tr');
+
+    linhas.forEach(linha => {
+        const id = linha.cells[0].innerText.toLowerCase();
+        const data = linha.cells[1].innerText.toLowerCase();
+        const itens = linha.cells[2].innerText.toLowerCase();
+        const valor = linha.cells[3].innerText.toLowerCase();
+
+        let textoParaBuscar;
+        switch (filtroSelect) {
+            case 'id':
+                textoParaBuscar = id;
+                break;
+            case 'data':
+                textoParaBuscar = data;
+                break;
+            case 'itens':
+                textoParaBuscar = itens;
+                break;
+            case 'valor':
+                textoParaBuscar = valor;
+                break;
+            default:
+                textoParaBuscar = '';
+        }
+
+        // Verificar se a linha deve ser exibida
+        if (textoParaBuscar.includes(buscaInput)) {
+            linha.style.display = ''; // Exibir linha
+        } else {
+            linha.style.display = 'none'; // Ocultar linha
+        }
+    });
+}
+
+// Inicializa o sistema ao carregar
+window.onload = function() {
+    carregarProdutos();
+};

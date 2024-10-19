@@ -43,12 +43,24 @@
 
         <div id="visualizacao" class="tab-content">
             <h2>Compras Realizadas</h2>
+            <div class="filtro">
+                <label for="busca">Buscar: </label>
+                <input type="text" id="busca" oninput="filtrarTabela()">
+                <label for="filtro">Filtro: </label>
+                <select id="filtro" onchange="filtrarTabela()">
+                    <option value="id">ID</option>
+                    <option value="data">Data</option>
+                    <option value="itens">Itens</option>
+                    <option value="valor">Valor Total</option>
+                </select>
+            </div>
             <table id="visualizacao-tabela">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Data</th>
                         <th>Itens</th>
+                        <th>Valor Total</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -56,8 +68,13 @@
                     <!-- As linhas das compras realizadas serão adicionadas dinamicamente aqui -->
                 </tbody>
             </table>
-        </div>        
+        </div>    
     </div>
+
+    <!-- Notificações -->
+    <div id="successNotification" class="notification hidden">Pedido adicionado com sucesso!</div>
+    <div id="editNotification" class="notification hidden">Pedido editado com sucesso!</div>
+    <div id="deleteNotification" class="notification hidden">Pedido excluído com sucesso!</div>
 
     <script src="gestaodepedidos.js"></script>
 </body>

@@ -158,6 +158,7 @@ function editarCompra(id) {
     const finalizarButton = document.getElementById('finalizar');
     finalizarButton.innerText = 'Editar Compra';
     finalizarButton.style.backgroundColor = '#ffc107';
+    
 
     compraAtual = id;
     showTab('carrinho');
@@ -167,7 +168,7 @@ function editarCompra(id) {
 function restaurarBotaoFinalizar() {
     const finalizarButton = document.getElementById('finalizar');
     finalizarButton.innerText = 'Finalizar Compra';
-    finalizarButton.style.backgroundColor = '#007BFF';
+    finalizarButton.style.backgroundColor = '#28a745';
 }
 
 // Função para limpar campos após a edição

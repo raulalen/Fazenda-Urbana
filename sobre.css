@@ -21,7 +21,7 @@ body {
     text-align: center;
 }
 
-.img-top-bar{
+.img-top-bar {
     width: 100px;
     height: 100px;
     padding-top: 10px;
@@ -35,8 +35,11 @@ header {
     padding-bottom: 12px;
 }
 
-h3 {
-    font-size: 28px;
+p {
+    font-size: 21px;
+    color: white;
+    text-align: left; /* Alinha o texto à esquerda */
+    margin: 0; /* Remove margem padrão */
 }
 
 /* Estilo das abas */
@@ -67,38 +70,28 @@ h3 {
     background-color: #000000cc;
 }
 
-h3 {
-    font-size: 48px;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    padding-top: 200px;
+.content-container {
+    display: flex; /* Utiliza flexbox para organizar os elementos lado a lado */
+    justify-content: space-between; /* Espaçamento entre os elementos */
+    padding: 20px; /* Espaçamento interno da área de conteúdo */
+    margin-top: 70px; /* Adiciona margem superior para não sobrepor a barra superior */
 }
 
-/* Estilo para os botões abaixo do h3 */
-.buttons {
+.text-content {
+    flex: 1; /* Permite que o texto ocupe a largura necessária */
+    padding-right: 20px; /* Espaçamento entre o texto e a imagem */
+    padding-left:150px;
+    padding-top: 150px;
+}
+
+.image-content {
+    flex: 1; /* Permite que a imagem ocupe a largura necessária */
     display: flex;
-    flex-direction: column; /* Coloca os botões em uma coluna, um abaixo do outro */
-    align-items: center; /* Centraliza os botões horizontalmente */
-    gap: 20px; /* Espaçamento entre os botões */
-    margin-top: 20px;
+    justify-content: center; /* Centraliza a imagem horizontalmente */
+    align-items: center; /* Centraliza a imagem verticalmente */
 }
 
-.buttons button {
-    background-color: #00000080;
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    font-size: 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%; /* Faz com que os botões tenham o mesmo tamanho */
-    max-width: 300px; /* Define uma largura máxima para não ficarem muito grandes */
+.celeiro-image {
+    max-width: 100%; /* Garante que a imagem não ultrapasse a largura do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
 }
-
-
-.buttons button:hover {
-    background-color: #000000cc;
-}
-

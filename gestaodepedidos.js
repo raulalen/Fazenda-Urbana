@@ -1,12 +1,12 @@
 const produtos = [
-    { nome: 'Maçã', preco: 2.00 },
-    { nome: 'Banana', preco: 1.50 },
-    { nome: 'Laranja', preco: 1.80 },
+    { nome: 'Alface', preco: 2.00 },
+    { nome: 'Couve', preco: 1.50 },
+    { nome: 'Brócolis', preco: 1.80 },
     { nome: 'Tomate', preco: 3.00 },
     { nome: 'Cenoura', preco: 2.50 },
-    { nome: 'Pera', preco: 2.20 },
-    { nome: 'Manga', preco: 4.00 },
-    { nome: 'Kiwi', preco: 3.00 },
+    { nome: 'Limão', preco: 2.20 },
+    { nome: 'Maçã', preco: 4.00 },
+    { nome: 'Banana', preco: 3.00 },
     { nome: 'Batata', preco: 1.20 },
     { nome: 'Berinjela', preco: 2.30 }
 ];

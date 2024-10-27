@@ -10,16 +10,39 @@
 <body>
 
     <header class="top-bar">
-        <img class="img-top-bar" src="imagens/logonovaurbanfarmpng.png" alt="logoUrbanFarm">
+        <a href="menuprincipal.html">
+            <img class="img-top-bar" src="imagens/logonovaurbanfarmpng.png" alt="logoUrbanFarm">
+        </a>
+        <div class="menu-icon" onclick="toggleSidebar()">&#9776;</div>
+        <div class="profile-icon" onclick="toggleProfileMenu(event)">
+            <img class="img-perfil" src="imagens/perfil.png" alt="iconePerfil">
+        </div>
+        <div class="profile-menu">
+            <ul>
+                <li class="lista"><a href="meuperfil.html">Meu Perfil</a></li>
+                <li class="lista"><a href="configuracoes.html">Configurações</a></li>
+                <li class="lista"><a href="login.html">Sair</a></li>
+            </ul>
+        </div>
     </header>
 
-    <!-- Abas para Navegação -->
-    <div class="tab-buttons">
-        <button class="back-button" onclick="window.location.href='menuprincipal.html'">Retornar</button>
+    <div class="sidebar">
+        <ul>
+            <li class="lista"><a href="gestaodeclientes.html">Gestão de Clientes</a></li>
+            <li class="lista"><a href="gestaodepedidos.html">Gestão de Pedidos</a></li>
+            <li class="lista"><a href="gestaodefornecedores.html">Gestão de Fornecedores</a></li>
+            <li class="lista"><a href="gerenciamentoperfis.html">Gerenciamento de Perfis</a></li>
+        </ul>
     </div>
 
+    <!-- Nova div para o conteúdo principal -->
+        <!-- Abas para Navegação -->
+        <div class="tab-buttons">
+            <button class="back-button" onclick="window.location.href='menuprincipal.html'">Retornar</button>
+        </div>
+
+    <div class="main-content">
     <div class="container">
-        <h1>Carrinho de Compras</h1>
         <div class="tabs">
             <button id="tab1" class="tab-button active">Novo Pedido</button>
             <button id="tab2" class="tab-button">Visualização de Pedidos</button>
@@ -28,21 +51,21 @@
         <div id="carrinho" class="tab-content active">            
             <div class="carrinho-container">
                 <div class="adicionar-itens">
-                    <h2>Adicione itens:</h2>
+                    <h3>Adicione itens:</h3>
                     <ul id="produtos"></ul>
-                    <h3>Total: R$ <span id="total">0.00</span></h3>
                     <button id="finalizar" onclick="finalizarCompra()">Finalizar Compra</button>
                 </div>
 
                 <div class="previsao">
                     <h3>Pré-visualização:</h3>
                     <ul id="previsao-list"></ul>
+                    <h3 class="total">Total: R$ <span id="total">0.00</span></h3>
                 </div>
             </div>
         </div>
 
         <div id="visualizacao" class="tab-content">
-            <h2>Compras Realizadas</h2>
+            <h3 class="comprasrealizadas">Compras Realizadas</h3>
             <div class="filtro">
                 <label for="busca">Buscar: </label>
                 <input type="text" id="busca" oninput="filtrarTabela()">
@@ -69,6 +92,7 @@
                 </tbody>
             </table>
         </div>    
+    </div>
     </div>
 
     <!-- Notificações -->

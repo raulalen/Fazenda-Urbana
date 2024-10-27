@@ -3,13 +3,14 @@ body {
     margin: 0;
     padding: 0;
     background: #172031;
+    transition: margin-left 0.3s; /* Transição suave */
 }
 
 .top-bar {
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    height: 30px; /* Ajuste a altura conforme necessário */
+    justify-content: center;
+    align-items: center;
+    height: 60px;
     position: fixed;
     top: 0;
     left: 0;
@@ -20,22 +21,96 @@ body {
     text-align: center;
 }
 
-.img-top-bar{
+.img-top-bar {
     width: 100px;
     height: 100px;
     padding-top: 10px;
 }
 
-header {
-    font-size: 15px;
-    font-weight: bold;
+.menu-icon {
+    font-size: 24px;
     color: white;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    left: 20px; /* Ajustado para ficar no canto direito */
 }
 
-h3 {
-    font-size: 28px;
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 115px; /* Abaixo da barra superior */
+    left: -250px; /* Inicialmente escondido */
+    height: calc(100% - 30px); /* Altura da página menos a barra superior */
+    background-color: #000000cc;
+    padding: 15px;
+    transition: left 0.3s; /* Transição suave para a sidebar */
+    z-index: 999; /* Um nível abaixo da barra superior */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    margin-bottom: 15px;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    display: block;
+    padding: 10px;
+}
+
+/* Ícone de perfil */
+.profile-icon {
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    right: 20px; /* Ajuste conforme necessário */
+}
+
+.img-perfil {
+    width: 30px; /* Ajustar conforme necessário */
+    height: 30px; /* Ajustar conforme necessário */
+    padding-top: 10px;
+
+}
+
+/* Menu de perfil */
+.profile-menu {
+    position: absolute;
+    top: 60px; /* Abaixo da barra superior */
+    right: 20px; /* Alinhado à direita */
+    background-color: #000000;
+    display: none; /* Inicialmente escondido */
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 999;
+}
+
+.profile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-menu li {
+    margin: 15px;
+}
+
+.profile-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    display: block;
+    transition: background-color 0.3s;
 }
 
 /* Estilo das abas */
@@ -49,12 +124,22 @@ h3 {
     justify-content: space-between; /* Distribui os botões ao longo do contêiner */
     padding: 10px;
     background-color: #00000049;
-    margin-top: 54px;
+    margin-top: 60px;
 }
 
 .tab-buttons .tab-buttons-left {
     display: flex;
     align-items: center;
+}
+
+.tab-buttons .tab-button {
+    background-color: #00000049;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
 }
 
 .tab-buttons .tab-button:hover {
@@ -79,21 +164,46 @@ h3 {
     background-color: #000000cc;
 }
 
+.main-content {
+    transition: margin-left 0.3s; /* Transição suave para a margem */
+    margin-left: 0; /* Valor inicial */
+}
+
 .container {
     max-width: 1000px;
-    width: 100%;
+    width: 800px;
     background: white;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin-top: 20px; /* Adiciona espaço para evitar sobreposição com a top-bar */
-    margin-left: 23%;
+    margin-top: 10px; /* Adiciona espaço para evitar sobreposição com a top-bar */
+    margin-left: 350px;
+}
+
+h3{
+    margin: 12px;
+    margin-top: 0px;
+    text-align: center;
+}
+
+.total {
+    position: fixed;
+    bottom: 20px; /* Ajuste conforme necessário */
+    right: 10px; /* Ajuste conforme necessário */
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000; /* Garante que o elemento fique acima de outros */
+}
+
+.comprasrealizadas {
+    margin: 30px;
 }
 
 .tabs {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     gap: 20px; /* Reduzido o espaço entre os botões */
 }
 
@@ -150,7 +260,6 @@ li {
     justify-content: space-between;
     align-items: center;
     padding: 5px;
-    border-bottom: 1px solid #eee;
     transition: background 0.2s;
 }
 
@@ -171,10 +280,6 @@ li .quantidade {
     line-height: 1;
 }
 
-li:hover {
-    background: #f9f9f9;
-}
-
 button {
     background: #28a745;
     color: white;
@@ -190,7 +295,7 @@ button:hover {
 }
 
 button#finalizar {
-    margin-top: 20px;
+
     background: #28a745; /* Cor verde */
     color: white;
     border: none;
@@ -204,14 +309,6 @@ button#finalizar {
 /* Estilo ao passar o mouse sobre o botão */
 button#finalizar:hover {
     background: #218838; /* Tom de verde mais escuro */
-}
-
-h3 {
-    text-align: center;
-    margin-top: 20px;
-    font-weight: bold;
-    color: #333;
-    font-size: 28px;
 }
 
 .filtro {
@@ -241,7 +338,6 @@ h3 {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
     background-color: white;
 }
 

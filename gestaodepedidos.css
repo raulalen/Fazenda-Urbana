@@ -176,7 +176,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin-top: 10px; /* Adiciona espaço para evitar sobreposição com a top-bar */
+    margin-top: 35px; /* Adiciona espaço para evitar sobreposição com a top-bar */
     margin-left: 350px;
 }
 

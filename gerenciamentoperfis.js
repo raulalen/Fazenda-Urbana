@@ -39,36 +39,43 @@ function showNotification(type) {
 profileForm.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    const usuario = document.getElementById('usuario').value;
+    const id = '#' + gerarID(); // Adiciona o "#" antes do ID gerado
+    const nome = document.getElementById('nome').value;
     const email = document.getElementById('email').value;
     const senha = document.getElementById('senha').value;
+    const funcao = document.getElementById('tipoPerfil').value;
+    const dataCriacao = obterDataAtual();
 
     if (editingRow) {
-        // Atualiza a linha existente
-        editingRow.querySelector('td[data-label="Nome de Usuário"]').textContent = usuario;
+        editingRow.querySelector('td[data-label="nome completo"]').textContent = nome;
         editingRow.querySelector('td[data-label="E-mail"]').textContent = email;
-        editingRow.setAttribute('data-senha', senha); // Armazena a senha na linha
+        editingRow.querySelector('td[data-label="Função"]').textContent = funcao;
+        editingRow.querySelector('td[data-label="Data"]').textContent = dataCriacao;
+        editingRow.setAttribute('data-senha', senha);
         editingRow = null;
         submitButton.textContent = 'Adicionar Perfil';
         submitButton.classList.remove('edit-button');
         showNotification('edit');
         showTab('visualizacao');
     } else {
-        // Adiciona uma nova linha sem exibir a senha
         const newRow = document.createElement('tr');
-        newRow.setAttribute('data-senha', senha); // Armazena a senha na linha
+        newRow.setAttribute('data-senha', senha);
         newRow.innerHTML = 
-            `<td data-label="Nome de Usuário">${usuario}</td>
+            `<td data-label="ID">${id}</td>
+            <td data-label="nome completo">${nome}</td>
             <td data-label="E-mail">${email}</td>
+            <td data-label="Função">${funcao}</td>
+            <td data-label="Data">${dataCriacao}</td>
             <td data-label="Ações">
                 <button class="editar" onclick="editarPerfil(this)">Editar</button>
                 <button class="excluir" onclick="excluirPerfil(this)">Excluir</button>
             </td>`;
-        
         profileTableBody.appendChild(newRow);
-        profileForm.reset();
         showNotification('success');
     }
+
+    profileForm.reset();
+    showTab('visualizacao');
 });
 
 // Função para editar um perfil
@@ -76,7 +83,7 @@ function editarPerfil(button) {
     const row = button.parentElement.parentElement;
     const cells = row.querySelectorAll('td');
 
-    document.getElementById('usuario').value = cells[0].textContent;
+    document.getElementById('nome').value = cells[0].textContent;
     document.getElementById('email').value = cells[1].textContent;
     document.getElementById('senha').value = row.getAttribute('data-senha'); // Recupera a senha
 
@@ -108,14 +115,24 @@ function pesquisarPerfil() {
         let match = false;
 
         switch (selectedColumn) {
-            case 'usuario':
+            case 'id':
                 match = cells[0].textContent.toUpperCase().indexOf(filter) > -1;
                 break;
-            case 'email':
+            case 'nome':
                 match = cells[1].textContent.toUpperCase().indexOf(filter) > -1;
+                break;
+            case 'email':
+                match = cells[2].textContent.toUpperCase().indexOf(filter) > -1;
+                break;
+            case 'funcao':
+                match = cells[3].textContent.toUpperCase().indexOf(filter) > -1;
+                break;
+            case 'data':
+                match = cells[4].textContent.toUpperCase().indexOf(filter) > -1;
                 break;
         }
 
+        // Mostrar ou esconder a linha com base na correspondência
         rows[i].style.display = match ? '' : 'none';
     }
 }
@@ -136,6 +153,26 @@ function showTab(tabId) {
         button.classList.toggle('active', button.getAttribute('onclick').includes(tabId));
     });
 }
+
+// Função para gerar ID aleatório
+function gerarID() {
+    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let resultado = '';
+    for (let i = 0; i < 5; i++) {
+        resultado += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    }
+    return resultado;
+}
+
+// Função para obter a data atual no formato DD/MM/AAAA
+function obterDataAtual() {
+    const hoje = new Date();
+    const dia = String(hoje.getDate()).padStart(2, '0');
+    const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+    const ano = hoje.getFullYear();
+    return `${dia}/${mes}/${ano}`;
+}
+
 
 function toggleSidebar() {
     const sidebar = document.querySelector('.sidebar');

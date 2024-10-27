@@ -54,16 +54,22 @@
             
             <label for="filterColumn" class="filter-label">Filtro:</label>
             <select id="filterColumn" class="filter-select">
-                <option value="usuario">Nome de Usuário</option>
+                <option value="id">ID</option>
+                <option value="nome">Nome de Completo</option>
                 <option value="email">E-mail</option>
+                <option value="funcao">Função</option>
+                <option value="data">Data de Criação</option>
             </select>
         </div>
 
         <table id="profileTable">
             <thead>
                 <tr>
-                    <th>Nome de Usuário</th>
+                    <th>ID</th>
+                    <th>Nome Completo</th>
                     <th>E-mail</th>
+                    <th>Função</th>
+                    <th>Data da Criação</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -75,13 +81,19 @@
 
     <div id="adicionar" class="tab">
         <form id="profileForm">
-            <h3>Novo Perfil</h3>
-            <label for="usuario">Nome de Usuário</label>
-            <input type="text" id="usuario" required>
+            <label for="nome">Nome Completo:</label>
+            <input type="text" id="nome" required>
             <label for="email">E-mail:</label>
             <input type="text" id="email" required>
             <label for="senha">Senha:</label>
             <input type="password" id="senha" required>
+            <div class="perfil-container">
+                <label for="tipoPerfil">Tipo de Perfil:</label>
+                <select class="tipoPerfil" id="tipoPerfil">
+                    <option value="Vendedor">Vendedor</option>
+                    <option value="Administrador">Administrador</option>
+                </select>
+            </div>
             <button type="submit" id="submitButton" class="submit-button">Adicionar Perfil</button>
         </form>
     </div>

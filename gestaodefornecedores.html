@@ -10,8 +10,30 @@
 <body>
 
     <header class="top-bar">
-        <img class="img-top-bar" src="imagens/logonovaurbanfarmpng.png" alt="logoUrbanFarm">
+        <a href="menuprincipal.html">
+            <img class="img-top-bar" src="imagens/logonovaurbanfarmpng.png" alt="logoUrbanFarm">
+        </a>
+        <div class="menu-icon" onclick="toggleSidebar()">&#9776;</div>
+        <div class="profile-icon" onclick="toggleProfileMenu(event)">
+            <img class="img-perfil" src="imagens/perfil.png" alt="iconePerfil">
+        </div>
+        <div class="profile-menu">
+            <ul>
+                <li><a href="meuperfil.html">Meu Perfil</a></li>
+                <li><a href="configuracoes.html">Configurações</a></li>
+                <li><a href="login.html">Sair</a></li>
+            </ul>
+        </div>
     </header>
+
+    <div class="sidebar">
+        <ul>
+            <li><a href="gestaodeclientes.html">Gestão de Clientes</a></li>
+            <li><a href="gestaodepedidos.html">Gestão de Pedidos</a></li>
+            <li><a href="gestaodefornecedores.html">Gestão de Fornecedores</a></li>
+            <li><a href="gerenciamentoperfis.html">Gerenciamento de Perfis</a></li>
+        </ul>
+    </div>
 
     <!-- Abas para Navegação -->
     <div class="tab-buttons">
@@ -22,10 +44,10 @@
         </div>
     </div>
 
+    <div class="main-content">
     <div id="adicionar" class="tab">
         <form id="fornecedorForm">
         <div class="esquerda">
-            <h3>Novo Fornecedor</h3>
             <label for="nomeEmpresa">Nome Empresa:</label>
             <input type="text" id="nomeEmpresa" required>
             <label for="email">E-mail:</label>
@@ -36,11 +58,10 @@
             <input type="text" id="inscricao" required>
             <label for="telefone">Número de Telefone:</label>
             <input type="tel" id="telefone" required>
+            <button type="submit" id="submitButton" class="submit-button">Adicionar Fornecedor</button>
         </div>
         <div class="direita">
-            <div class="rua-space">
-                <label for="rua">Rua:</label>
-            </div>
+            <label for="rua">Rua:</label>
             <input type="text" id="rua" required>
             <label for="cep">CEP:</label>
             <input type="text" id="cep" required>
@@ -52,7 +73,6 @@
             <input type="text" id="cidade" required>
             <label for="estado">Estado:</label>
             <input type="text" id="estado" required>
-            <button type="submit" id="submitButton" class="submit-button">Adicionar Fornecedor</button>
         </div>
     </div>
     </form>
@@ -101,6 +121,7 @@
                 <!-- As linhas de fornecedors serão adicionadas aqui -->
             </tbody>
         </table>
+    </div>
     </div>
 
     <!-- Notificações -->

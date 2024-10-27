@@ -10,20 +10,32 @@
 <body>
 
     <header class="top-bar">
-        <img class="img-top-bar" src="imagens/logonovaurbanfarmpng.png" alt="logoUrbanFarm">
+        <a href="menuprincipal.html">
+            <img class="img-top-bar" src="imagens/logonovaurbanfarmpng.png" alt="logoUrbanFarm">
+        </a>
+        <div class="menu-icon" onclick="toggleSidebar()">&#9776;</div> <!-- Ícone de lista -->
+        <div class="profile-icon" onclick="toggleProfileMenu(event)">
+            <img class="img-perfil" src="imagens/perfil.png" alt="iconePerfil">
+        </div> <!-- Ícone de perfil -->
+        <div class="profile-menu">
+            <ul>
+                <li><a href="meuperfil.html">Meu Perfil</a></li>
+                <li><a href="configuracoes.html">Configurações</a></li>
+                <li><a href="login.html">Sair</a></li>
+            </ul>
+        </div>
     </header>
 
-    <nav class="sub-header">
-        <ul class="sub-header-list">
-            <li><a href="perfil.html">MEU PERFIL</a></li>
-            <li><a href="configuracoes.html">CONFIGURAÇÕES</a></li>
-            <li><a href="sobre.html">SOBRE</a></li>
-            <li><a href="login.html">SAIR</a></li>
+    <div class="sidebar">
+        <ul>
+            <li><a href="gestaodeclientes.html">Gestão de Clientes</a></li>
+            <li><a href="gestaodepedidos.html">Gestão de Pedidos</a></li>
+            <li><a href="gestaodefornecedores.html">Gestão de Fornecedores</a></li>
+            <li><a href="gerenciamentoperfis.html">Gerenciamento de Perfis</a></li>
         </ul>
-    </nav>
+    </div>
 
     <div class="main-content">
-        <h1 class="section-title">Controle de Vendas</h1>
         <div class="container">
             <!-- Primeira Caixa -->
             <a href="gestaodeclientes.html" class="box">
@@ -78,7 +90,6 @@
             </a>
         </div>
     </div>
-
+    <script src="menuprincipal.js"></script>
 </body>
-
 </html>

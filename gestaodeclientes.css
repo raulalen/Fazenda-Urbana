@@ -1,16 +1,16 @@
-/* Estilo geral do corpo */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background: #172031;
+    transition: margin-left 0.3s; /* Transição suave */
 }
 
 .top-bar {
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    height: 30px; /* Ajuste a altura conforme necessário */
+    justify-content: center;
+    align-items: center;
+    height: 60px;
     position: fixed;
     top: 0;
     left: 0;
@@ -21,22 +21,96 @@ body {
     text-align: center;
 }
 
-.img-top-bar{
+.img-top-bar {
     width: 100px;
     height: 100px;
     padding-top: 10px;
 }
 
-header {
-    font-size: 15px;
-    font-weight: bold;
+.menu-icon {
+    font-size: 24px;
     color: white;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    left: 20px; /* Ajustado para ficar no canto direito */
 }
 
-h3 {
-    font-size: 28px;
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 115px; /* Abaixo da barra superior */
+    left: -250px; /* Inicialmente escondido */
+    height: calc(100% - 30px); /* Altura da página menos a barra superior */
+    background-color: #000000cc;
+    padding: 15px;
+    transition: left 0.3s; /* Transição suave para a sidebar */
+    z-index: 999; /* Um nível abaixo da barra superior */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    margin-bottom: 15px;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    display: block;
+    padding: 10px;
+}
+
+/* Ícone de perfil */
+.profile-icon {
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    right: 20px; /* Ajuste conforme necessário */
+}
+
+.img-perfil {
+    width: 30px; /* Ajustar conforme necessário */
+    height: 30px; /* Ajustar conforme necessário */
+    padding-top: 10px;
+
+}
+
+/* Menu de perfil */
+.profile-menu {
+    position: absolute;
+    top: 60px; /* Abaixo da barra superior */
+    right: 20px; /* Alinhado à direita */
+    background-color: #000000;
+    display: none; /* Inicialmente escondido */
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 999;
+}
+
+.profile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-menu li {
+    margin: 15px;
+}
+
+.profile-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    display: block;
+    transition: background-color 0.3s;
 }
 
 /* Estilo das abas */
@@ -50,7 +124,7 @@ h3 {
     justify-content: space-between; /* Distribui os botões ao longo do contêiner */
     padding: 10px;
     background-color: #00000049;
-    margin-top: 54px;
+    margin-top: 60px;
 }
 
 .tab-buttons .tab-buttons-left {
@@ -90,6 +164,11 @@ h3 {
     background-color: #000000cc;
 }
 
+.main-content {
+    transition: margin-left 0.3s; /* Transição suave para a margem */
+    margin-left: 0; /* Valor inicial */
+}
+
 /* Estilo da tabela de clientes */
 table {
     width: 100%;
@@ -99,7 +178,7 @@ table {
 }
 
 th, td {
-    padding: 12px;
+    padding: 6px;
     border: 1px solid #ddd;
     text-align: left;
 }
@@ -163,7 +242,7 @@ form button {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
-    width: 490px;
+    width: 485px;
 }
 
 form button:hover {
@@ -191,14 +270,6 @@ form {
     border-radius: 10px;
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
-}
-
-/* Estilo para o título do formulário */
-form h3 {
-    width: 100%; /* Garante que o título ocupe toda a largura disponível */
-    margin-bottom: 20px; /* Espaço abaixo do título */
-    font-size: 32px;
 }
 
 /* Seções do formulário */
@@ -213,10 +284,6 @@ form h3 {
     display: flex;
     flex-direction: column;
     gap: 15px; /* Espaço entre os itens dentro da seção */
-}
-
-.rua-space {
-    padding-top: 95px;
 }
 
 /* Alinhamento dos labels e inputs */

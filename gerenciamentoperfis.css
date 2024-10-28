@@ -188,78 +188,6 @@ body {
     margin-left: 0; /* Valor inicial */
 }
 
-/* Estilo das abas */
-.tab {
-    display: none;
-    padding: 20px;
-}
-
-.tab-buttons {
-    display: flex;
-    justify-content: space-between; /* Distribui os botões ao longo do contêiner */
-    padding: 10px;
-    background-color: #00000049;
-    margin-top: 60px;
-}
-
-.tab-buttons .tab-buttons-left {
-    display: flex;
-    align-items: center;
-}
-
-.tab-buttons .tab-button {
-    background-color: #00000049;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-left: 10px;
-}
-
-.tab-buttons .tab-button:hover {
-    background-color: #000000cc;
-}
-
-.tab-buttons .tab-button.active {
-    background-color: #000000cc;
-}
-
-.tab-buttons .back-button {
-    background-color: #00000049;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-right: auto; /* Move o botão para o lado esquerdo */
-}
-
-.tab-buttons .back-button:hover {
-    background-color: #000000cc;
-}
-
-/* Estilo da tabela de pedidos */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-}
-
-th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-th {
-    background-color: #f4f4f4;
-}
-
-td {
-    vertical-align: middle;
-}
-
 button.editar {
     background-color: #ff9800; /* Cor laranja para edição */
     color: white;
@@ -323,7 +251,7 @@ form {
     border-radius: 10px;
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 100px;
+    margin-top: 70px;
 }
 
 form label {

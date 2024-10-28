@@ -121,7 +121,7 @@ body {
 
 .tab-buttons {
     display: flex;
-    justify-content: space-between; /* Distribui os botões ao longo do contêiner */
+    justify-content: flex-start; /* Garante que os botões fiquem à esquerda */
     padding: 10px;
     background-color: #00000049;
     margin-top: 60px;
@@ -136,7 +136,6 @@ body {
     background-color: #00000049;
     color: white;
     border: none;
-    padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
     margin-left: 10px;
@@ -173,23 +172,21 @@ body {
     max-width: 1000px;
     width: 800px;
     background: white;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin-top: 35px; /* Adiciona espaço para evitar sobreposição com a top-bar */
-    margin-left: 350px;
+    margin-top: 8px; /* Adiciona espaço para evitar sobreposição com a top-bar */
+    margin-left: 255px;
 }
 
 h3{
-    margin: 12px;
     margin-top: 0px;
-    text-align: center;
 }
 
 .total {
     position: fixed;
-    bottom: 20px; /* Ajuste conforme necessário */
-    right: 10px; /* Ajuste conforme necessário */
+    bottom: -15px; /* Ajuste conforme necessário */
+    right: 5px; /* Ajuste conforme necessário */
     background-color: #f1f1f1;
     padding: 10px;
     border-radius: 5px;
@@ -216,6 +213,7 @@ h3{
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 180px;
 }
 
 .tab-button.active {
@@ -285,7 +283,6 @@ button {
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 5px 10px;
     cursor: pointer;
     transition: background 0.3s;
 }
@@ -295,7 +292,6 @@ button:hover {
 }
 
 button#finalizar {
-
     background: #28a745; /* Cor verde */
     color: white;
     border: none;
@@ -333,6 +329,13 @@ button#finalizar:hover {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+.tabela-container {
+    max-height: 420px; /* Defina a altura máxima desejada */
+    overflow-y: auto; /* Permite rolagem vertical */
+    border: 1px solid #ddd; /* Opcional: borda para o contêiner */
+    border-radius: 5px; /* Opcional: borda arredondada */
 }
 
 table {

@@ -234,15 +234,15 @@ button.excluir:hover {
 
 /* Botão de submissão */
 form button {
-    padding: 12px 20px;
+    padding: 10px 10px;
     border-radius: 5px;
     border: none;
     background-color: #4CAF50;
     color: white;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     transition: background-color 0.3s;
-    width: 485px;
+    width: 478px;
 }
 
 form button:hover {
@@ -265,11 +265,12 @@ form {
     gap: 30px; /* Espaço entre os itens do formulário */
     max-width: 1000px; /* Ajuste o tamanho conforme necessário */
     margin: 0px auto;
-    padding: 25px;
+    padding: 20px;
     border: 1px solid #ddd;
     border-radius: 10px;
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
 }
 
 /* Seções do formulário */
@@ -283,7 +284,7 @@ form {
 .esquerda, .direita {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Espaço entre os itens dentro da seção */
+    gap: 10px; /* Espaço entre os itens dentro da seção */
 }
 
 /* Alinhamento dos labels e inputs */
@@ -291,11 +292,11 @@ form label {
     font-weight: bold;
     display: flex;
     align-items: center;
-    gap: 10px; /* Espaço entre o texto e o campo */
+    gap: 5px; /* Espaço entre o texto e o campo */
 }
 
 form input {
-    padding: 8px;
+    padding: 5px;
     border-radius: 5px;
     border: 1px solid #ddd;
     width: 100%; /* Faz com que os inputs ocupem a largura disponível da seção */

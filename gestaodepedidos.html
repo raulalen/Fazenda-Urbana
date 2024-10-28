@@ -35,67 +35,69 @@
         </ul>
     </div>
 
-    <!-- Nova div para o conteúdo principal -->
-        <!-- Abas para Navegação -->
-        <div class="tab-buttons">
-            <button class="back-button" onclick="window.location.href='menuprincipal.html'">Retornar</button>
-        </div>
-
-    <div class="main-content">
-    <div class="container">
-        <div class="tabs">
-            <button id="tab1" class="tab-button active">Novo Pedido</button>
+    <div class="tab-buttons">
+        <button class="back-button" onclick="window.location.href='menuprincipal.html'">Retornar</button>
+        <div class="tab-buttons-left">
+            <button id="tab1" class="tab-button">Novo Pedido</button>
             <button id="tab2" class="tab-button">Visualização de Pedidos</button>
         </div>
+    </div>
 
-        <div id="carrinho" class="tab-content active">            
-            <div class="carrinho-container">
-                <div class="adicionar-itens">
-                    <h3>Adicione itens:</h3>
-                    <ul id="produtos"></ul>
-                    <button id="finalizar" onclick="finalizarCompra()">Finalizar Compra</button>
-                </div>
+    <div class="main-content">
+        <div class="container">
+            <div class="tabs">
+            </div>
 
-                <div class="previsao">
-                    <h3>Pré-visualização:</h3>
-                    <ul id="previsao-list"></ul>
-                    <h3 class="total">Total: R$ <span id="total">0.00</span></h3>
+            <div id="carrinho" class="tab-content active">            
+                <div class="carrinho-container">
+                    <div class="adicionar-itens">
+                        <h3>Adicione itens:</h3>
+                        <div class="produtos-container">
+                            <ul id="produtos" class="produtos-list"></ul>
+                        </div>
+                        <button id="finalizar" onclick="finalizarCompra()">Finalizar Compra</button>
+                    </div>
+
+                    <div class="previsao">
+                        <h3>Pré-visualização:</h3>
+                        <ul id="previsao-list"></ul>
+                        <h3 class="total">Total: R$ <span id="total">0.00</span></h3>
+                    </div>
                 </div>
             </div>
+
+            <div id="visualizacao" class="tab-content">
+                <div class="filtro">
+                    <label for="busca">Buscar: </label>
+                    <input type="text" id="busca" oninput="filtrarTabela()">
+                    <label for="filtro">Filtro: </label>
+                    <select id="filtro" onchange="filtrarTabela()">
+                        <option value="id">ID</option>
+                        <option value="data">Data</option>
+                        <option value="itens">Itens</option>
+                        <option value="valor">Valor Total</option>
+                    </select>
+                </div>
+                <div class="tabela-container">
+                    <table id="visualizacao-tabela">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Data</th>
+                                <th>Itens</th>
+                                <th>Valor Total</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- As linhas das compras realizadas serão adicionadas dinamicamente aqui -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>    
         </div>
-
-        <div id="visualizacao" class="tab-content">
-            <h3 class="comprasrealizadas">Compras Realizadas</h3>
-            <div class="filtro">
-                <label for="busca">Buscar: </label>
-                <input type="text" id="busca" oninput="filtrarTabela()">
-                <label for="filtro">Filtro: </label>
-                <select id="filtro" onchange="filtrarTabela()">
-                    <option value="id">ID</option>
-                    <option value="data">Data</option>
-                    <option value="itens">Itens</option>
-                    <option value="valor">Valor Total</option>
-                </select>
-            </div>
-            <table id="visualizacao-tabela">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Data</th>
-                        <th>Itens</th>
-                        <th>Valor Total</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- As linhas das compras realizadas serão adicionadas dinamicamente aqui -->
-                </tbody>
-            </table>
-        </div>    
-    </div>
     </div>
 
-    <!-- Notificações -->
     <div id="successNotification" class="notification hidden">Pedido adicionado com sucesso!</div>
     <div id="editNotification" class="notification hidden">Pedido editado com sucesso!</div>
     <div id="deleteNotification" class="notification hidden">Pedido excluído com sucesso!</div>

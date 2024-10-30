@@ -344,3 +344,26 @@ form input, form button {
     background-color: #fff;
     max-width: 200px; /* Limitar a largura máxima */
 }
+
+/* Estilo da tabela de clientes */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: white;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+td {
+    vertical-align: middle;
+}

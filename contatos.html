@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="contatos.css">
+    <title>UF - Contatos</title>
+    <link rel="shortcut icon" type="icon" href="imagens/celeirourbanfarm.png">
+</head>
+<body>
+
+    <header class="top-bar">
+        <a href="menuprincipal.html">
+            <img class="img-top-bar" src="imagens/logonovaurbanfarmpng.png" alt="logoUrbanFarm">
+        </a>
+        <div class="profile-icon" onclick="toggleProfileMenu(event)">
+            <img class="img-perfil" src="imagens/perfil.png" alt="iconePerfil">
+        </div>
+        <div class="profile-menu">
+            <ul>
+                <li><a href="perfil.html">Meu Perfil</a></li>
+                <li><a href="configuracoes.html">Configurações</a></li>
+                <li><a href="login.html">Sair</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Nova div para o conteúdo principal -->
+        <!-- Abas para Navegação -->
+        <div class="tab-buttons">
+            <button class="back-button" onclick="window.location.href='configuracoes.html'">Retornar</button>
+        </div>
+
+    <div class="content-container">
+        <div class="text-content">
+            <p class="email">E-mail: contato@urbanfarm.com.br</p>
+            <p class="numero">Número: (11) 99999-9999</p>
+        </div>
+        <div class="image-content">
+            <img src="imagens/celeirourbanfarm.png" alt="logo" class="celeiro-image">
+        </div>
+    </div>
+
+    <script src="sobre.js"></script>
+</body>
+</html>

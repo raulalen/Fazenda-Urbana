@@ -3,13 +3,14 @@ body {
     margin: 0;
     padding: 0;
     background: #172031;
+    transition: margin-left 0.3s; /* Transição suave */
 }
 
 .top-bar {
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    height: 30px; /* Ajuste a altura conforme necessário */
+    justify-content: center;
+    align-items: center;
+    height: 60px;
     position: fixed;
     top: 0;
     left: 0;
@@ -20,22 +21,96 @@ body {
     text-align: center;
 }
 
-.img-top-bar{
+.img-top-bar {
     width: 100px;
     height: 100px;
     padding-top: 10px;
 }
 
-header {
-    font-size: 15px;
-    font-weight: bold;
+.menu-icon {
+    font-size: 24px;
     color: white;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    left: 20px; /* Ajustado para ficar no canto direito */
 }
 
-h3 {
-    font-size: 28px;
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 115px; /* Abaixo da barra superior */
+    left: -250px; /* Inicialmente escondido */
+    height: calc(100% - 30px); /* Altura da página menos a barra superior */
+    background-color: #000000cc;
+    padding: 15px;
+    transition: left 0.3s; /* Transição suave para a sidebar */
+    z-index: 999; /* Um nível abaixo da barra superior */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    margin-bottom: 15px;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    display: block;
+    padding: 10px;
+}
+
+/* Ícone de perfil */
+.profile-icon {
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    right: 20px; /* Ajuste conforme necessário */
+}
+
+.img-perfil {
+    width: 30px; /* Ajustar conforme necessário */
+    height: 30px; /* Ajustar conforme necessário */
+    padding-top: 10px;
+
+}
+
+/* Menu de perfil */
+.profile-menu {
+    position: absolute;
+    top: 60px; /* Abaixo da barra superior */
+    right: 20px; /* Alinhado à direita */
+    background-color: #000000;
+    display: none; /* Inicialmente escondido */
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 999;
+}
+
+.profile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-menu li {
+    margin: 15px;
+}
+
+.profile-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    display: block;
+    transition: background-color 0.3s;
 }
 
 /* Estilo das abas */
@@ -49,7 +124,30 @@ h3 {
     justify-content: space-between; /* Distribui os botões ao longo do contêiner */
     padding: 10px;
     background-color: #00000049;
-    margin-top: 54px;
+    margin-top: 60px;
+}
+
+.tab-buttons .tab-buttons-left {
+    display: flex;
+    align-items: center;
+}
+
+.tab-buttons .tab-button {
+    background-color: #00000049;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.tab-buttons .tab-button:hover {
+    background-color: #000000cc;
+}
+
+.tab-buttons .tab-button.active {
+    background-color: #000000cc;
 }
 
 .tab-buttons .back-button {
@@ -62,16 +160,12 @@ h3 {
     margin-right: auto; /* Move o botão para o lado esquerdo */
 }
 
-.tab-buttons .back-button:hover {
-    background-color: #000000cc;
-}
-
 h3 {
     font-size: 48px;
     font-weight: bold;
     color: white;
     text-align: center;
-    padding-top: 200px;
+    margin-top: 120px;
 }
 
 /* Estilo para os botões abaixo do h3 */
@@ -80,7 +174,6 @@ h3 {
     flex-direction: column; /* Coloca os botões em uma coluna, um abaixo do outro */
     align-items: center; /* Centraliza os botões horizontalmente */
     gap: 20px; /* Espaçamento entre os botões */
-    margin-top: 20px;
 }
 
 .buttons button {
@@ -101,3 +194,7 @@ h3 {
     background-color: #000000cc;
 }
 
+.main-content {
+    transition: margin-left 0.3s; /* Transição suave para a margem */
+    margin-left: 0; /* Valor inicial */
+}

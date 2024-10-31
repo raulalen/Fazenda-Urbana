@@ -10,17 +10,30 @@
 <body>
 
     <header class="top-bar">
-        <img class="img-top-bar" src="imagens/logonovaurbanfarmpng.png" alt="logoUrbanFarm">
+        <a href="menuprincipal.html">
+            <img class="img-top-bar" src="imagens/logonovaurbanfarmpng.png" alt="logoUrbanFarm">
+        </a>
+        <div class="profile-icon" onclick="toggleProfileMenu(event)">
+            <img class="img-perfil" src="imagens/perfil.png" alt="iconePerfil">
+        </div>
+        <div class="profile-menu">
+            <ul>
+                <li><a href="perfil.html">Meu Perfil</a></li>
+                <li><a href="configuracoes.html">Configurações</a></li>
+                <li><a href="login.html">Sair</a></li>
+            </ul>
+        </div>
     </header>
 
-    <!-- Abas para Navegação -->
-    <div class="tab-buttons">
-        <button class="back-button" onclick="window.location.href='menuprincipal.html'">Retornar</button>
-    </div>
+    <!-- Nova div para o conteúdo principal -->
+        <!-- Abas para Navegação -->
+        <div class="tab-buttons">
+            <button class="back-button" onclick="window.location.href='configuracoes.html'">Retornar</button>
+        </div>
 
     <div class="content-container">
         <div class="text-content">
-            <p>     A UrbanFarm é uma empresa dedicada ao gerenciamento de fazendas urbanas, promovendo a produção sustentável e a distribuição de produtos frescos. Para facilitar suas operações, desenvolveu um sistema de gerenciamento dinâmico e de fácil uso, que abrange a gestão de clientes, pedidos e fornecedores.
+            <p> A UrbanFarm é uma empresa dedicada ao gerenciamento de fazendas urbanas, promovendo a produção sustentável e a distribuição de produtos frescos. Para facilitar suas operações, desenvolveu um sistema de gerenciamento dinâmico e de fácil uso, que abrange a gestão de clientes, pedidos e fornecedores.
 
                 O sistema permite um cadastro eficiente de clientes, facilitando a comunicação e o acompanhamento de pedidos. A gestão de pedidos é simplificada, permitindo que os usuários adicionem e removam itens rapidamente, finalizando compras com poucos cliques. Além disso, a interação com fornecedores é otimizada, garantindo que a fazenda tenha sempre os insumos necessários. 
                 
@@ -31,5 +44,6 @@
         </div>
     </div>
 
+    <script src="sobre.js"></script>
 </body>
 </html>

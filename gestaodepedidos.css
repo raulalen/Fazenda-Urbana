@@ -80,7 +80,6 @@ body {
     width: 30px; /* Ajustar conforme necessário */
     height: 30px; /* Ajustar conforme necessário */
     padding-top: 10px;
-
 }
 
 /* Menu de perfil */
@@ -172,21 +171,38 @@ body {
     max-width: 1000px;
     width: 800px;
     background: white;
-    padding: 10px;
+    padding: 12px;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     margin-top: 8px; /* Adiciona espaço para evitar sobreposição com a top-bar */
     margin-left: 255px;
 }
 
-h3{
+p{
     margin-top: 0px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.cliente-container {
+    display: flex; /* Flexbox para alinhar horizontalmente */
+    align-items: center; /* Alinhar verticalmente ao centro */
+    margin-bottom: 5px;
+    gap: 10px; /* Espaçamento entre o texto e o select */
+}
+
+.cliente {
+    width: 260px; /* Largura do select */
+    padding: 5px; /* Padding para dar mais espaçamento interno */
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
 }
 
 .total {
     position: fixed;
-    bottom: -15px; /* Ajuste conforme necessário */
-    right: 5px; /* Ajuste conforme necessário */
+    bottom: -12px; /* Ajuste conforme necessário */
+    right: 6px; /* Ajuste conforme necessário */
     background-color: #f1f1f1;
     padding: 10px;
     border-radius: 5px;
@@ -247,7 +263,6 @@ h3{
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-
 ul {
     list-style: none;
     padding: 0;
@@ -257,7 +272,7 @@ li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px;
+    padding: 2px;
     transition: background 0.2s;
 }
 

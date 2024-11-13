@@ -51,7 +51,13 @@
             <div id="carrinho" class="tab-content active">            
                 <div class="carrinho-container">
                     <div class="adicionar-itens">
-                        <h3>Adicione itens:</h3>
+                        <div class="cliente-container">
+                            <p>Cliente:</p>
+                            <select class="cliente" id="cliente">
+                            </select>    
+                        </div>
+                          
+                        <p>Adicione itens:</p>
                         <div class="produtos-container">
                             <ul id="produtos" class="produtos-list"></ul>
                         </div>
@@ -59,9 +65,9 @@
                     </div>
 
                     <div class="previsao">
-                        <h3>Pré-visualização:</h3>
+                        <p>Pré-visualização:</p>
                         <ul id="previsao-list"></ul>
-                        <h3 class="total">Total: R$ <span id="total">0.00</span></h3>
+                        <p class="total">Total: R$ <span id="total">0.00</span></p>
                     </div>
                 </div>
             </div>
@@ -73,6 +79,7 @@
                     <label for="filtro">Filtro: </label>
                     <select id="filtro" onchange="filtrarTabela()">
                         <option value="id">ID</option>
+                        <option value="cliente">Cliente</option>
                         <option value="data">Data</option>
                         <option value="itens">Itens</option>
                         <option value="valor">Valor Total</option>
@@ -83,6 +90,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Cliente</th>
                                 <th>Data</th>
                                 <th>Itens</th>
                                 <th>Valor Total</th>

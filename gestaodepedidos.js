@@ -276,6 +276,9 @@ function filtrarTabela() {
             case 'id':
                 textoParaBuscar = id;
                 break;
+            case 'cliente':
+                textoParaBuscar = cliente;
+                break;
             case 'data':
                 textoParaBuscar = data;
                 break;
@@ -312,7 +315,7 @@ function toggleSidebar() {
         mainContent.style.marginLeft = '0'; // Ajustar o conteúdo principal
     } else {
         sidebar.style.left = '0'; // Mostrar a sidebar
-        mainContent.style.marginLeft = '150px'; // Ajustar o conteúdo principal
+        mainContent.style.marginLeft = '120px'; // Ajustar o conteúdo principal
     }
 }
 

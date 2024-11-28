@@ -56,7 +56,7 @@ clienteForm.addEventListener('submit', function (event) {
     const numero = document.getElementById('numero').value;
     const bairro = document.getElementById('bairro').value;
     const cidade = document.getElementById('cidade').value;
-    const estado = document.getElementById('estado').value;
+    const estado = document.getElementById('estado').value; // Agora é um select
 
     if (!nomeCompleto || !email || !cpf || !telefone || !dataNascimento || !rua || !cep || !numero || !cidade || !estado) {
         alert('Todos os campos obrigatórios devem ser preenchidos.');
@@ -75,7 +75,7 @@ clienteForm.addEventListener('submit', function (event) {
             <td data-label="Número">${numero}</td>
             <td data-label="Bairro">${bairro}</td>
             <td data-label="Cidade">${cidade}</td>
-            <td data-label="Estado">${estado}</td>
+            <td data-label="Estado">${estado}</td> <!-- Exibindo o estado selecionado -->
             <td data-label="Ações">
                 <button class="editar" onclick="editarCliente(this)">Editar</button>
                 <button class="excluir" onclick="excluirCliente(this)">Excluir</button>
@@ -86,6 +86,7 @@ clienteForm.addEventListener('submit', function (event) {
         submitButton.classList.remove('edit-button');
         showNotification('edit');
         showTab('visualizacao');
+        clienteForm.reset();
     } else {
         const newRow = document.createElement('tr');
         newRow.innerHTML = 
@@ -99,7 +100,7 @@ clienteForm.addEventListener('submit', function (event) {
             <td data-label="Número">${numero}</td>
             <td data-label="Bairro">${bairro}</td>
             <td data-label="Cidade">${cidade}</td>
-            <td data-label="Estado">${estado}</td>
+            <td data-label="Estado">${estado}</td> <!-- Exibindo o estado selecionado -->
             <td data-label="Ações">
                 <button class="editar" onclick="editarCliente(this)">Editar</button>
                 <button class="excluir" onclick="excluirCliente(this)">Excluir</button>
@@ -126,7 +127,7 @@ function editarCliente(button) {
     document.getElementById('numero').value = cells[7].textContent;
     document.getElementById('bairro').value = cells[8].textContent;
     document.getElementById('cidade').value = cells[9].textContent;
-    document.getElementById('estado').value = cells[10].textContent;
+    document.getElementById('estado').value = cells[10].textContent; // Ajuste para preencher o estado
 
     editingRow = row;
 
@@ -138,9 +139,14 @@ function editarCliente(button) {
 
 // Função para excluir um cliente sem confirmação
 function excluirCliente(button) {
-    const row = button.parentElement.parentElement;
-    clienteTableBody.removeChild(row);
-    showNotification('delete');
+    // Exibe uma janela de confirmação
+    const confirmarExclusao = confirm("Você realmente deseja excluir esse cliente?");
+
+    if (confirmarExclusao) {
+        const row = button.parentElement.parentElement;
+        clienteTableBody.removeChild(row);
+        showNotification('delete');
+    }
 }
 
 // Função para pesquisar clientes
@@ -240,3 +246,31 @@ function toggleProfileMenu(event) {
     profileMenu.style.display = profileMenu.style.display === 'block' ? 'none' : 'block';
     event.stopPropagation(); // Impede a propagação do clique para a janela
 }
+
+// Função para permitir apenas números
+function allowOnlyNumbers(event) {
+    const regex = /^[0-9]*$/;
+    if (!regex.test(event.target.value)) {
+        event.target.value = event.target.value.replace(/\D/g, '');
+    }
+}
+
+// Função para permitir apenas letras
+function allowOnlyLetters(event) {
+    const regex = /^[A-Za-zÀ-ÿ\s]*$/;
+    if (!regex.test(event.target.value)) {
+        event.target.value = event.target.value.replace(/[^A-Za-zÀ-ÿ\s]/g, '');
+    }
+}
+
+// Adicionar validação aos campos específicos
+document.getElementById('telefone').addEventListener('input', allowOnlyNumbers);
+document.getElementById('cpf').addEventListener('input', allowOnlyNumbers);
+document.getElementById('cep').addEventListener('input', allowOnlyNumbers);
+document.getElementById('numero').addEventListener('input', allowOnlyNumbers);
+
+document.getElementById('nomeCompleto').addEventListener('input', allowOnlyLetters);
+document.getElementById('rua').addEventListener('input', allowOnlyLetters);
+document.getElementById('bairro').addEventListener('input', allowOnlyLetters);
+document.getElementById('cidade').addEventListener('input', allowOnlyLetters);
+document.getElementById('estado').addEventListener('input', allowOnlyLetters);

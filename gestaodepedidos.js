@@ -25,7 +25,7 @@ document.getElementById('tab2').addEventListener('click', function() {
     atualizarTabelaVisualizacao(); // Atualiza a tabela ao abrir a aba
 });
 
-// Função para mostrar a aba 
+// Função para mostrar a aba
 function showTab(tabName) {
     // Remover a classe 'active' de todos os conteúdos das abas
     document.querySelectorAll('.tab-content').forEach(tab => {
@@ -123,6 +123,9 @@ function finalizarCompra() {
     });
 
     restaurarBotaoFinalizar();
+    
+    // Exibe a notificação de sucesso
+    showNotification('success');
 }
 
 // Função de edição da compra
@@ -155,13 +158,13 @@ function editarCompra(id) {
     updateTotal();
     updatePrevisaoList();
 
-    const finalizarButton = document.getElementById('finalizar');
+    let finalizarButton = document.getElementById('finalizar');
     finalizarButton.innerText = 'Editar Compra';
     finalizarButton.style.backgroundColor = '#ffc107';
-    
 
     compraAtual = id;
     showTab('carrinho');
+
 }
 
 // Função para restaurar o botão de finalizar compra
@@ -251,88 +254,37 @@ function updatePrevisaoList() {
 
     carrinho.forEach(item => {
         const li = document.createElement('li');
-        li.innerText = `${item.nome} - R$ ${item.preco.toFixed(2)} (x${item.quantidade})`;
+        li.innerText = `${item.nome} (x${item.quantidade}) - R$ ${(item.preco * item.quantidade).toFixed(2)}`;
         previsaoList.appendChild(li);
     });
 }
 
-// Função para filtrar a tabela com base na busca e no filtro selecionado
-function filtrarTabela() {
-    const buscaInput = document.getElementById('busca').value.toLowerCase();
-    const filtroSelect = document.getElementById('filtro').value;
-    const visualizacaoTabelaBody = document.querySelector('#visualizacao-tabela tbody');
+// Função para mostrar a notificações
+function showNotification(type) {
+    let notification;
+    switch(type) {
+        case 'success':
+            notification = successNotification;
+            break;
+        case 'edit':
+            notification = editNotification;
+            break;
+        case 'delete':
+            notification = deleteNotification;
+            break;
+        default:
+            return;
+    }
+    notification.classList.remove('hidden');
+    notification.classList.add('visible');
 
-    // Obter todas as linhas da tabela
-    const linhas = visualizacaoTabelaBody.querySelectorAll('tr');
-
-    linhas.forEach(linha => {
-        const id = linha.cells[0].innerText.toLowerCase();
-        const data = linha.cells[1].innerText.toLowerCase();
-        const itens = linha.cells[2].innerText.toLowerCase();
-        const valor = linha.cells[3].innerText.toLowerCase();
-
-        let textoParaBuscar;
-        switch (filtroSelect) {
-            case 'id':
-                textoParaBuscar = id;
-                break;
-            case 'cliente':
-                textoParaBuscar = cliente;
-                break;
-            case 'data':
-                textoParaBuscar = data;
-                break;
-            case 'itens':
-                textoParaBuscar = itens;
-                break;
-            case 'valor':
-                textoParaBuscar = valor;
-                break;
-            default:
-                textoParaBuscar = '';
-        }
-
-        // Verificar se a linha deve ser exibida
-        if (textoParaBuscar.includes(buscaInput)) {
-            linha.style.display = ''; // Exibir linha
-        } else {
-            linha.style.display = 'none'; // Ocultar linha
-        }
-    });
+    setTimeout(function () {
+        notification.classList.remove('visible');
+        notification.classList.add('hidden');
+    }, 3000);
 }
 
-// Inicializa o sistema ao carregar
+// Inicialização
 window.onload = function() {
     carregarProdutos();
 };
-
-function toggleSidebar() {
-    const sidebar = document.querySelector('.sidebar');
-    const mainContent = document.querySelector('.main-content');
-
-    if (sidebar.style.left === '0px') {
-        sidebar.style.left = '-250px'; // Esconder a sidebar
-        mainContent.style.marginLeft = '0'; // Ajustar o conteúdo principal
-    } else {
-        sidebar.style.left = '0'; // Mostrar a sidebar
-        mainContent.style.marginLeft = '120px'; // Ajustar o conteúdo principal
-    }
-}
-
-// Fechar o menu ao clicar fora dele
-window.onclick = function(event) {
-    const sidebar = document.querySelector('.sidebar');
-    if (!event.target.matches('.menu-icon') && sidebar.style.left === '0px') {
-        sidebar.style.left = '-250px'; // Esconder a sidebar
-        document.querySelector('.main-content').style.marginLeft = '0'; // Ajustar o conteúdo principal
-    }
-};
-
-//profile itens
-function toggleProfileMenu(event) {
-    const profileMenu = document.querySelector('.profile-menu');
-
-    // Alterna a visibilidade do menu de perfil
-    profileMenu.style.display = profileMenu.style.display === 'block' ? 'none' : 'block';
-    event.stopPropagation(); // Impede a propagação do clique para a janela
-}

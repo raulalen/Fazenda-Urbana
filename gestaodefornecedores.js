@@ -233,3 +233,32 @@ function toggleProfileMenu(event) {
     profileMenu.style.display = profileMenu.style.display === 'block' ? 'none' : 'block';
     event.stopPropagation(); // Impede a propagação do clique para a janela
 }
+
+// Função para permitir apenas números
+function allowOnlyNumbers(event) {
+    const regex = /^[0-9]*$/;
+    if (!regex.test(event.target.value)) {
+        event.target.value = event.target.value.replace(/\D/g, '');
+    }
+}
+
+// Função para permitir apenas letras
+function allowOnlyLetters(event) {
+    const regex = /^[A-Za-zÀ-ÿ\s]*$/;
+    if (!regex.test(event.target.value)) {
+        event.target.value = event.target.value.replace(/[^A-Za-zÀ-ÿ\s]/g, '');
+    }
+}
+
+// Adicionar validação aos campos específicos
+document.getElementById('inscricao').addEventListener('input', allowOnlyNumbers);
+document.getElementById('telefone').addEventListener('input', allowOnlyNumbers);
+document.getElementById('cnpj').addEventListener('input', allowOnlyNumbers);
+document.getElementById('cep').addEventListener('input', allowOnlyNumbers);
+document.getElementById('numero').addEventListener('input', allowOnlyNumbers);
+
+document.getElementById('nomeEmpresa').addEventListener('input', allowOnlyLetters);
+document.getElementById('rua').addEventListener('input', allowOnlyLetters);
+document.getElementById('bairro').addEventListener('input', allowOnlyLetters);
+document.getElementById('cidade').addEventListener('input', allowOnlyLetters);
+document.getElementById('estado').addEventListener('input', allowOnlyLetters);

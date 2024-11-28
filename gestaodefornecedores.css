@@ -302,6 +302,15 @@ form input {
     border: 1px solid #ddd;
 }
 
+select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 102.5%;
+    background-color: #fff;
+    font-size: 16px;
+}
+
 /* Estilo das notificações */
 .notification {
     position: fixed;
